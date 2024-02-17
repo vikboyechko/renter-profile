@@ -15,7 +15,7 @@ const seedDatabase = async () => {
         returning: true,
     });
 
-    // Directly bulk create properties, reviews, and leases assuming foreign keys are correctly set in JSON
+    // bulk create properties, reviews, and leases
     await Property.bulkCreate(propertyData);
     await Review.bulkCreate(reviewData);
     await Lease.bulkCreate(leaseData);
