@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Property, Review } = require('../models');
+const { User, Property, Review, Lease } = require('../models');
 const withAuth = require('../utils/auth'); // custom helper for authentication
 
 // GET all properties for homepage
@@ -11,10 +11,9 @@ router.get('/', async (req, res) => {
                     model: User,
                     attributes: ['name'],
                 },
-                //TODO: check to see if this works or needs to be model User like the route below
                 {
                     model: Review,
-                    attributes: ['content', 'date_created'],
+                    attributes: ['content', 'created_at'],
                 },
             ],
 
@@ -24,7 +23,8 @@ router.get('/', async (req, res) => {
 
         // Pass serialized data and session flag into template
         res.render('homepage', {
-            posts,
+
+            properties,
             logged_in: req.session.logged_in,
         });
     } catch (err) {
@@ -33,9 +33,8 @@ router.get('/', async (req, res) => {
     }
 });
 
-// TODO: Add a route to get all users for the homepage
-
-
+// GET one property with its reviews and leases
+======
 
 // GET one property
 router.get('/properties/:id', async (req, res) => {
@@ -47,7 +46,6 @@ router.get('/properties/:id', async (req, res) => {
                     attributes: ['name'],
                 },
                 {
-                    // include the comment model here:
                     model: Review,
                     include: [
                         {
@@ -56,6 +54,13 @@ router.get('/properties/:id', async (req, res) => {
                         },
                     ],
                 },
+
+                {
+                    model: Lease,
+                    attributes: ['startDate', 'endDate', 'rent_amount'],
+                    include: [{ model: User, attributes: ['name'] }],
+                },
+
             ],
         });
 
@@ -117,9 +122,14 @@ router.get('/edit/:id', withAuth, async (req, res) => {
             ],
         });
         const property = propertyId.get({ plain: true });
+
+
+        if (!(property.user_id === req.session.user_id)) {
+
         const propertyUser = property.user_id;
         const reqPropertyUser = req.session.user_id;
         if (!(propertyUser === reqPropertyUser)) {
+
             res.redirect('/dashboard');
             return;
         }
@@ -130,6 +140,12 @@ router.get('/edit/:id', withAuth, async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
+});
+
+
+// General catch-all route for 404 errors.
+router.use((req, res) => {
+    res.status(404).send('Page not found');
 });
 
 module.exports = router;

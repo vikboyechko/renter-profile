@@ -40,27 +40,23 @@ router.delete('/:id', async (req, res) => {
 // If a PUT request is made to /api/properties/edit/:id, that property is updated.
 router.put('/update/:id', async (req, res) => {
     try {
-        const propertyId = req.params.id;
-        const { name, address1, address2, city, state, zip } = req.body;
+        const propertyUpdate = await Property.update(req.body, {
+            where: {
+                id: req.params.id,
+                user_id: req.session.user_id,
+            },
+        });
 
-        const propertyData = await Property.findByPk(propertyId);
-
-        if (!propertyData) {
-            res.status(404).json({ message: 'No property found with this id!' });
+        // If the property is not found at the id, or the user does not have permission to update the property, return a 404 error.
+        if (propertyUpdate[0] === 0) {
+            res.status(404).json({
+                message: 'No property found with this id, or you do not have permission to update this property.',
+            });
             return;
         }
 
-        propertyData.name = name;
-        propertyData.address1 = address1;
-        propertyData.address2 = address2;
-        propertyData.city = city;
-        propertyData.state = state;
-        propertyData.zip = zip;
-        propertyData.date_created = new Date();
+        res.status(200).json({ message: 'Property updated successfully' });
 
-        await propertyData.save();
-
-        res.status(200).json(postData);
     } catch (err) {
         res.status(500).json(err);
     }
