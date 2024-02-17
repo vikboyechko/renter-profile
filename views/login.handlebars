@@ -1,0 +1,48 @@
+{{!-- Login or Signup page --}}
+
+{{!-- Login --}}
+<div class="row">
+    <div class="col-12 col-md-5 card p-4 mx-2 mb-4 mb-md-0">
+        <h2 class="card-title">Login</h2>
+
+        <form class="form login-form card-text">
+            <div class="form-group my-4">
+                <label for="email-login">Email:</label>
+                <input class="form-input w-100 py-1" type="text" id="email-login" />
+            </div>
+            <div class="form-group">
+                <label for="password-login">Password:</label>
+                <input class="form-input w-100 py-1" type="password" id="password-login" />
+            </div>
+            <div class="form-group mt-4">
+                <button class="btn btn-primary" type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+{{!-- Signup --}}
+    <div class="col-12 col-md-5 card p-4 mx-2">
+        <h2 class="card-title">Signup</h2>
+
+        <form class="form signup-form card-text">
+            <div class="form-group my-2">
+                <label for="name-signup">Username:</label>
+                <input class="form-input w-100" type="text" id="name-signup" />
+            </div>
+            <div class="form-group my-2">
+                <label for="email-signup">Email:</label>
+                <input class="form-input w-100 py-1" type="text" id="email-signup" />
+            </div>
+            <div class="form-group my-2">
+                <label for="password-signup">Password:</label>
+                <input class="form-input w-100 py-1" type="password" id="password-signup" />
+            </div>
+            <div class="form-group mt-4">
+                <button class="btn btn-primary" type="submit">Signup</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{!-- event handlers in login.js --}}
+<script src="./js/login.js"></script>
