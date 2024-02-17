@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Sunny Apartments",
+    "address1": "123 Sunny St",
+    "address2": "Apt 2",
+    "city": "Sunnyvale",
+    "state": "CA",
+    "zip": "94086",
+    "user_id": 1
+  },
+  {
+    "name": "Cozy Cottage",
+    "address1": "456 Cozy Lane",
+    "city": "Cozytown",
+    "state": "CT",
+    "zip": "06001",
+    "user_id": 2
+  }
+]

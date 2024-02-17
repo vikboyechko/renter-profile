@@ -7,6 +7,7 @@ router.post('/', async (req, res) => {
             ...req.body,
             user_id: req.session.user_id,
         });
+
         res.status(200).json(newReview);
     } catch (err) {
         res.status(400).json(err);
@@ -39,5 +40,6 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
 
 module.exports = router;

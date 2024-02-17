@@ -56,6 +56,7 @@ router.put('/update/:id', async (req, res) => {
         }
 
         res.status(200).json({ message: 'Property updated successfully' });
+
     } catch (err) {
         res.status(500).json(err);
     }

@@ -5,6 +5,7 @@ const propertyRoutes = require('./propertyRoutes');
 const reviewRoutes = require('./reviewRoutes');
 const leaseRoutes = require('./leaseRoutes');
 
+
 // When a request is made to the /users or /posts or /comments path, it will be directed to the index.js in the /api folder.
 router.use('/users', userRoutes);
 router.use('/properties', propertyRoutes);

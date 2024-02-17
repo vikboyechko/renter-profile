@@ -16,12 +16,14 @@ router.get('/', async (req, res) => {
                     attributes: ['content', 'created_at'],
                 },
             ],
+
         });
         // Serialize data so the template can read it
         const properties = propertyData.map((property) => property.get({ plain: true }));
 
         // Pass serialized data and session flag into template
         res.render('homepage', {
+
             properties,
             logged_in: req.session.logged_in,
         });
@@ -32,6 +34,9 @@ router.get('/', async (req, res) => {
 });
 
 // GET one property with its reviews and leases
+======
+
+// GET one property
 router.get('/properties/:id', async (req, res) => {
     try {
         const propertyData = await Property.findByPk(req.params.id, {
@@ -49,11 +54,13 @@ router.get('/properties/:id', async (req, res) => {
                         },
                     ],
                 },
+
                 {
                     model: Lease,
                     attributes: ['startDate', 'endDate', 'rent_amount'],
                     include: [{ model: User, attributes: ['name'] }],
                 },
+
             ],
         });
 
@@ -116,7 +123,13 @@ router.get('/edit/:id', withAuth, async (req, res) => {
         });
         const property = propertyId.get({ plain: true });
 
+
         if (!(property.user_id === req.session.user_id)) {
+
+        const propertyUser = property.user_id;
+        const reqPropertyUser = req.session.user_id;
+        if (!(propertyUser === reqPropertyUser)) {
+
             res.redirect('/dashboard');
             return;
         }
@@ -128,6 +141,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
 
 // General catch-all route for 404 errors.
 router.use((req, res) => {
