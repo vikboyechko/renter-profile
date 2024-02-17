@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Becky",
+    "email": "becky@hotmail.com",
+    "password": "password12345",
+    "phone": "952-456-7890",
+    "role": "renter"
+  },
+  {
+    "name": "Adrian",
+    "email": "adrian@gmail.com",
+    "password": "password12345",
+    "phone": "952-765-4321",
+    "role": "property_manager"
+  },
+  {
+    "name": "Sandy",
+    "email": "sandy12@aol.com",
+    "password": "password12345",
+    "phone": "952-789-0123",
+    "role": "renter"
+  }
+]
