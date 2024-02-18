@@ -13,6 +13,10 @@ Property.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     address_line1: {
       type: DataTypes.STRING(100),
       allowNull: false,
