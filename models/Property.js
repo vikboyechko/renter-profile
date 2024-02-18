@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// Create Project model and datatypes, including the user_id foreign key.
+// Create Property model and datatypes, including the user_id foreign key.
 class Property extends Model {}
 //name(optional)
 //change to singler--add
@@ -63,7 +63,7 @@ Property.init(
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'property',

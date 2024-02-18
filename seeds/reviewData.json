@@ -1,0 +1,18 @@
+[
+  {
+    "content": "Great place to live!",
+    "rating": 5,
+    "is_published": true,
+    "reviewer_id": 1,
+    "reviewee_id": 1,
+    "reviewee_type": "property"
+  },
+  {
+    "content": "Needs improvement.",
+    "rating": 2,
+    "is_published": true,
+    "reviewer_id": 2,
+    "reviewee_id": 2,
+    "reviewee_type": "property"
+  }
+]

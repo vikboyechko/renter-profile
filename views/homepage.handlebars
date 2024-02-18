@@ -1,0 +1,37 @@
+<div class="row">
+    <!-- Properties Section -->
+    <div class="col-12 mb-4">
+        <h2>Properties</h2>
+        <div class="d-flex flex-wrap">
+            {{#each properties}}
+            <div class="card m-2" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{address1}} {{address2}}</h6>
+                    <p class="card-text">{{city}}, {{state}} {{zip}}</p>
+                    <p class="card-text">Managed by: {{user.name}}</p>
+                    <p class="card-text">Contact: {{user.email}} or {{user.phone}}</p>
+                    {{!-- TODO: Add property reviews --}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    
+    <!-- Renters Section -->
+    <div class="col-12">
+        <h2>Renters</h2>
+        <div class="d-flex flex-wrap">
+            {{#each renters}}
+            <div class="card m-2" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{email}}</h6>
+                    <p class="card-text">Contact: {{phone}}</p>
+                    <!-- TODO: Add more renter details here, like properties, reviews -->
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

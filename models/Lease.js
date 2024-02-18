@@ -65,6 +65,7 @@ Lease.init(
         },
         renter_id: {
             type: DataTypes.INTEGER,
+
             references: {  //need to verify reference id for renter
                 model: 'user',
                 key: 'id',
@@ -73,7 +74,7 @@ Lease.init(
     },
     {
         sequelize,
-        timestamps: false,
+        timestamps: true,
         freezeTableName: true,
         underscored: true,
         modelName: 'lease',
@@ -81,6 +82,3 @@ Lease.init(
 );
 
 module.exports = Lease;
-  
-
-
