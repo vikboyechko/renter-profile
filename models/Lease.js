@@ -20,16 +20,9 @@ Lease.init(
         },
         end_date: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
             defaultValue: DataTypes.NOW,
-            validate: {
-                notNull: {
-                    msg: "End date is Required"
-                },
-                isDate: {
-                    msg: "Please enter ending date"
-                }
-            },
+            
         },
         rent_bedrooms: {
             type: DataTypes.INTEGER,

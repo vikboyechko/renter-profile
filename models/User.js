@@ -30,6 +30,14 @@ User.init(
         isEmail: true,
       },
     },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [8],
+        isAlphanumeric: true,
+      },
+    },
     phone: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -41,12 +49,16 @@ User.init(
       },
     },
 
-    password: {
+    role: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8],
-        isAlphanumeric: true,
+        isrenter:{
+          type:DataTypes.BOOLEAN,
+        },
+        isproperty_manager:{
+          type:DataTypes.BOOLEAN,
+        },
       },
     },
     date_created: {
