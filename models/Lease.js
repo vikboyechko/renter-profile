@@ -87,7 +87,7 @@ Lease.init(
     }
 );
 
-module.exports = Project;
+module.exports = Lease;
   
 
 
