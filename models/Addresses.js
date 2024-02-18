@@ -2,10 +2,10 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // Create Project model and datatypes, including the user_id foreign key.
-class Addresses extends Model {}
+class Property extends Model {}
 //name(optional)
 //change to singler--add
-Addresses.init(
+Property.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -62,8 +62,8 @@ Addresses.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'addresses',
+    modelName: 'property',
   }
 );
 
-module.exports = Addresses;
+module.exports = Property;
