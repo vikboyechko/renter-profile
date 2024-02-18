@@ -8,7 +8,7 @@ class User extends Model {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
-//add date stamp as wll
+
 
 User.init(
   {
@@ -48,6 +48,11 @@ User.init(
         len: [8],
         isAlphanumeric: true,
       },
+    },
+    date_created: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
   },
   {
