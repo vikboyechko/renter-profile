@@ -1,40 +1,62 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Lease extends Model {}
+class Lease extends Model { }
 
 Lease.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
-        },
-        startDate: {
+        start_date: {
             type: DataTypes.DATE,
             allowNull: false,
-        },
-        endDate: {
-            type: DataTypes.DATE,
-            allowNull: true, // This allows for currently active leases
-        },
-        rent_amount: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-        },
-        rent_bedrooms: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        validate: {
-            isIn: [['studio', '1br', '2br', '3br']],
+            defaultValue: DataTypes.NOW,
+            validate: {
+                notNull: {
+                    msg: "Start date is Required"
+                },
+                isDate: {
+                    msg: "Please enter starting date"
+                }
             },
         },
-        square_footage: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
+        end_date: {
+            type: DataTypes.DATE,
+            allowNull: true,
+            defaultValue: DataTypes.NOW,
+            
         },
-        property_id: {
+        rent_bedrooms: {
+            type: DataTypes.INTEGER,
+
+
+        },
+        //need to verify vaildate for bedroom
+        rent_bedrooms: {
+            type: DataTypes.INTEGER,
+            validate: {
+                studio: {
+                    type: DataTypes.Boolean,
+                    allowNull: true
+                },
+                one_bedroom: {
+                    type: DataTypes.Boolean,
+                    allowNull: true
+                },
+                two_bedroom: {
+                    type: DataTypes.Boolean,
+                    allowNull: true
+                },
+                three_bedroom: {
+                    type: DataTypes.Boolean,
+                    allowNull: true
+                },
+            }
+
+        },
+        square_footage: {
+            type: DataTypes.INTEGER
+        },
+
+        propert_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'property',
@@ -43,7 +65,8 @@ Lease.init(
         },
         renter_id: {
             type: DataTypes.INTEGER,
-            references: {
+
+            references: {  //need to verify reference id for renter
                 model: 'user',
                 key: 'id',
             },

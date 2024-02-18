@@ -3,57 +3,71 @@ const sequelize = require('../config/connection');
 
 // Create Property model and datatypes, including the user_id foreign key.
 class Property extends Model {}
-
+//name(optional)
+//change to singler--add
 Property.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        address1: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        address2: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        city: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        state: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [2, 2]
-            },
-        },
-        zip: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id',
-            },
-        },
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    {
-        sequelize,
-        timestamps: true,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'property',
-    }
+    name: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    address_line1: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+    address_line2: {
+      type: DataTypes.STRING(100),
+      allowNull:true,
+    
+    },
+    city: {
+      type: DataTypes.STRING(25),
+      allowNull: false,
+      validate: {
+        isAlpha: true, 
+      },
+    },
+    state: {
+      type: DataTypes.STRING(2),
+      allowNull: false,
+      validate: {
+        isAlpha: true, 
+      },
+    },
+    zip: {
+      type: DataTypes.INTEGER(5),
+      allowNull: false,
+      validate: {
+        isNumeric: true, 
+      },
+    },
+    date_created: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+  
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
+  },
+  {
+    sequelize,
+    timestamps: true,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'property',
+  }
 );
 
 module.exports = Property;
