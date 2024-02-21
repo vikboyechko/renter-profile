@@ -1,18 +1,18 @@
 const router = require('express').Router();
-const { User, Property, Review, Lease } = require('../models');
+const { Users, Properties, Reviews, Leases } = require('../models');
 const withAuth = require('../utils/auth'); // custom helper for authentication
 
 // GET all properties for homepage
 router.get('/', async (req, res) => {
     try {
-        const propertyData = await Property.findAll({
+        const propertyData = await Properties.findAll({
             include: [
                 {
-                    model: User,
+                    model: Users,
                     attributes: ['name', 'email', 'phone'],
                 },
                 {
-                    model: Review,
+                    model: Reviews,
                     attributes: ['content', 'created_at'],
                 },
             ],
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
         const properties = propertyData.map((property) => property.get({ plain: true }));
 
         // Get renters (users with the role of "renter")
-        const renterData = await User.findAll({
+        const renterData = await Users.findAll({
             where: { role: 'renter' },
             attributes: ['name', 'email', 'phone'],
         });
@@ -42,25 +42,25 @@ router.get('/', async (req, res) => {
 // GET one property with its reviews and leases
 router.get('/properties/:id', async (req, res) => {
     try {
-        const propertyData = await Property.findByPk(req.params.id, {
+        const propertyData = await Properties.findByPk(req.params.id, {
             include: [
                 {
-                    model: User,
+                    model: Users,
                     attributes: ['name'],
                 },
                 {
-                    model: Review,
+                    model: Reviews,
                     include: [
                         {
-                            model: User,
+                            model: Users,
                             attributes: ['name'],
                         },
                     ],
                 },
                 {
-                    model: Lease,
+                    model: Leases,
                     attributes: ['startDate', 'endDate', 'rent_amount'],
-                    include: [{ model: User, attributes: ['name'] }],
+                    include: [{ model: Users, attributes: ['name'] }],
                 },
             ],
         });
@@ -86,9 +86,9 @@ router.get('/properties/:id', async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         // Find the logged in user based on the session ID
-        const userData = await User.findByPk(req.session.user_id, {
+        const userData = await Users.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
-            include: [{ model: Property }],
+            include: [{ model: Properties }],
         });
 
         const user = userData.get({ plain: true });
@@ -114,20 +114,22 @@ router.get('/login', (req, res) => {
 
 router.get('/edit/:id', withAuth, async (req, res) => {
     try {
-        const propertyData = await Property.findByPk(req.params.id, {
+        const propertyData = await Properties.findByPk(req.params.id, {
             include: [
                 {
-                    model: User,
+                    model: Users,
                     attributes: ['name'],
                 },
             ],
         });
-        const property = propertyId.get({ plain: true });
-
-        if (!(property.user_id === req.session.user_id)) {
+        const property = propertyData.get({ plain: true });
+        const propertyUser = property.user_id;
+        const reqPropertyUser = req.session.user_id;
+        if (propertyUser !== reqPropertyUser) {
             res.redirect('/dashboard');
             return;
         }
+
         res.render('edit', {
             ...property,
             logged_in: req.session.logged_in,
@@ -137,7 +139,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
     }
 });
 
-// General catch-all route for 404 errors.
+// // General catch-all route for 404 errors.
 router.use((req, res) => {
     res.status(404).send('Page not found');
 });
