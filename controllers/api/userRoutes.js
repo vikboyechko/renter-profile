@@ -4,9 +4,10 @@ const { Users } = require('../../models');
 
 // If a POST request is made to /api/users, a new user is created. The user id and logged in state is saved to the session within the request object.
 router.post('/', async (req, res) => {
+    console.log('req.body:', req.body);
     try {
         const userData = await Users.create(req.body);
-        console.log('userData:', userData);
+        // console.log('userData:', userData);
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
@@ -20,6 +21,7 @@ router.post('/', async (req, res) => {
 
 // If a POST request is made to /api/users/login, the function checks to see if the user information matches the information in the database and logs the user in. If correct, the user ID and logged-in state are saved to the session within the request object.
 router.post('/login', async (req, res) => {
+    console.log('req.body:', req.body);
     try {
         const userData = await Users.findOne({ where: { email: req.body.email } });
 

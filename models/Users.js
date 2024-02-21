@@ -31,7 +31,7 @@ Users.init(
         },
         phone: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: [10],
             },
@@ -39,13 +39,10 @@ Users.init(
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [8],
-            },
         },
         role: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 isIn: [['renter', 'property_manager']],
             },

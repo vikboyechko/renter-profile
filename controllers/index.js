@@ -8,9 +8,4 @@ const homeRoutes = require('./homeRoutes');
 router.use('/', homeRoutes);
 router.use('/api', apiRoutes);
 
-// general error handling for routes that don't exist
-router.use((req, res) => {
-    res.status(404).send("Page not found");
-});
-
 module.exports = router;

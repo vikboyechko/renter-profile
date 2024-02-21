@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // Import the Property model from the models folder
-const { Properties } = require('../../models');
+const { Properties, Users, Reviews, Leases } = require('../../models');
 
 // If a POST request is made to /api/properties, a new property address is created. If there is an error, the function returns with a 400 error.
 router.post('/', async (req, res) => {
