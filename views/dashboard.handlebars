@@ -3,22 +3,22 @@
 
 <div class="row">
     <div class="col-auto">
-        <h2>Welcome, {{username}}!</h2>
+        <h2>Welcome, {{name}}!</h2>
     </div>
 </div>
 
 {{!-- Publish a new post --}}
 <div class="row mt-4">
     <div class="col-md-6 mb-4 mb-md-0">
-        <h3>Add a New Prorperty:</h3>
+        <h3>Add a New Property:</h3>
 
         <form class="form new-post-form">
             <div class="form-group my-3">
-                <label for="post-title">Post Title:</label>
+                <label for="post-title">Property Title:</label>
                 <input class="form-input w-100 my-3" type="text" id="post-title" name="post-title" />
             </div>
             <div class="form-group my-3">
-                <label for="post-content">Post Content:</label>
+                <label for="post-content">Property Content:</label>
                 <textarea class="form-input w-100 my-3" id="post-content" name="post-content"></textarea>
             </div>
             <div class="form-group">
@@ -28,18 +28,18 @@
     </div>
 
     {{!-- Previous posts --}}
-    {{#if posts.length}}
+    {{#if properties.length}}
     <div class="col-md-6 post-list p-3 ">
-        <h3>My Posts:</h3>
+        <h3>My Properties:</h3>
 
-        {{#each posts as |post|}}
+        {{#each properties as |property|}}
         <div class="row mb-2">
             <div class="col-md-8">
-                <h4><a href="/posts/{{post.id}}">{{post.title}}</a></h4>
+                <h4><a href="/properties/{{property.id}}">{{property.address1}}</a></h4>
             </div>
             <div class="col-md-4">
                 <a href="/edit/{{id}}" class="btn btn-sm btn-primary btn-edit" data-id="{{id}}">Edit</a>
-                <button class="btn btn-sm btn-danger btn-delete" data-id="{{post.id}}">DELETE</button>
+                <button class="btn btn-sm btn-danger btn-delete" data-id="{{property.id}}">DELETE</button>
             </div>
         </div>
         {{/each}}

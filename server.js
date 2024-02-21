@@ -1,3 +1,5 @@
+const morgan = require('morgan');
+
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -9,9 +11,10 @@ const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3003;
 
-// Set up sessions with cookies
+app.use(morgan('dev'));
+
 const sess = {
     secret: process.env.SESSION_SECRET,
     cookie: {
@@ -27,10 +30,8 @@ const sess = {
 
 app.use(session(sess));
 
-// Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
 
-// Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 

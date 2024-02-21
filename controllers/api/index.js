@@ -9,10 +9,4 @@ router.use('/users', userRoutes);
 router.use('/properties', propertyRoutes);
 router.use('/reviews', reviewRoutes);
 
-// general error handling after all other route middleware:
-router.use((err, req, res, next) => {
-    console.error(err.stack); // Log error "stack" for easier debugging
-    res.status(500).json({ message: 'Something went wrong on the server.' });
-});
-
 module.exports = router;

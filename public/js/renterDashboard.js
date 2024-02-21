@@ -19,41 +19,41 @@ const newFormHandler = async (event) => {
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert('Failed to publish post');
+            alert('Failed to publish property');
         }
     }
 };
 
-// This function is used to take the user to the edit page for a post
+// This function is used to take the user to the edit page for a property
 const editButtonHandler = async (event) => {
     if (event.target.classList.contains('btn-edit')) {
         const id = event.target.getAttribute('data-id');
 
-        const response = await fetch(`/api/posts/${id}`, {
+        const response = await fetch(`/api/properties/${id}`, {
             method: 'GET',
         });
 
         if (response.ok) {
-            document.location.replace('/posts/edit');
+            document.location.replace('/properties/edit');
         } else {
-            console.log('Failed to get post');
+            console.log('Failed to get properties');
         }
     }
 };
 
-// Function to handle the delete post button
+// Function to handle the delete property button
 const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
 
-        const response = await fetch(`/api/posts/${id}`, {
+        const response = await fetch(`/api/properties/${id}`, {
             method: 'DELETE',
         });
 
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert('Failed to delete post');
+            alert('Failed to delete property');
         }
     }
 };

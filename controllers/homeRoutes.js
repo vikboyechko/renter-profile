@@ -139,9 +139,4 @@ router.get('/edit/:id', withAuth, async (req, res) => {
     }
 });
 
-// // General catch-all route for 404 errors.
-router.use((req, res) => {
-    res.status(404).send('Page not found');
-});
-
 module.exports = router;
