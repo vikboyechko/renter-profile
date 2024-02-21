@@ -1,0 +1,49 @@
+{{!-- Individual post page with edit/delete for authors, comments, and add comment for logged in users --}}
+
+{{! The post details card --}}
+<div class="card p-4">
+    <h2 class="card-title">{{title}}</h2>
+    <p class="card-text">{{content}}</p>
+    <p>Posted by {{user.username}} on {{format_date date_created}}</p>
+    {{#if logged_in}}
+    {{!-- only show edit/delete buttons if the logged in user is the post author, see postsRoute.js for the render --}}
+    {{#if isAuthor}}
+    <p>
+        <a href="/edit/{{id}}" class="btn btn-primary btn-edit" data-id="{{id}}">Edit</a>
+        <button class="btn btn-danger btn-delete" data-id="{{id}}">DELETE</button>
+    </p>
+    {{/if}}
+    {{/if}}
+</div>
+
+{{! The comments section --}}
+<div class="row">
+    <div class="col-12 mt-3">
+        <h3>Comments:</h3>
+        {{#each comments as |comment|}}
+        <div class="card p-3 mb-2">
+            <p>{{comment.comment}}</p>
+            <p>Posted by {{comment.user.username}} on {{format_date comment.date_created}}</p>
+        </div>
+        {{/each}}
+    </div>
+
+    {{!-- Add comment form if logged in --}}
+    {{#if logged_in}}
+    <div class="col-12 mt-5">
+        <h3>Add a Comment:</h3>
+        <form class="form new-comment-form" data-id="{{id}}">
+            <div class="form-group my-3">
+                <label for="comment">Comment:</label>
+                <textarea class="form-input w-100 my-3" id="comment" name="comment"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Add Comment</button>
+            </div>
+        </form>
+    </div>
+    {{/if}}
+
+    {{!-- postEditDelete.js for post event handlers, and comment.js for the comments event handlers --}}
+    <script src="../js/postEditDelete.js"></script>
+    <script src="../js/comment.js"></script>

@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { Review } = require('../../models');
+const { Reviews } = require('../../models');
 
 router.post('/', async (req, res) => {
     try {
-        const newReview = await Review.create({
+        const newReview = await Reviews.create({
             ...req.body,
             user_id: req.session.user_id,
         });
@@ -16,9 +16,9 @@ router.post('/', async (req, res) => {
 // Get all reviews for a property
 router.get('/property/:propertyId', async (req, res) => {
     try {
-        const reviews = await Review.findAll({
+        const reviews = await Reviews.findAll({
             where: { property_id: req.params.propertyId },
-            // Include any related models here, such as the User model to show review author details
+            include: [{ model: Users }],
         });
         res.status(200).json(reviews);
     } catch (err) {
@@ -29,7 +29,7 @@ router.get('/property/:propertyId', async (req, res) => {
 // Get a single review by ID
 router.get('/:id', async (req, res) => {
     try {
-        const review = await Review.findByPk(req.params.id);
+        const review = await Reviews.findByPk(req.params.id);
         if (!review) {
             res.status(404).json({ message: 'No review found with this id!' });
             return;

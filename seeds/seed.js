@@ -1,24 +1,24 @@
 const sequelize = require('../config/connection');
-const { User, Property, Review, Lease } = require('../models');
+const { Users, Properties, Reviews, Leases } = require('../models');
 
-const userData = require('./userData.json');
-const propertyData = require('./propertyData.json');
-const reviewData = require('./reviewData.json');
-const leaseData = require('./leaseData.json');
+const userData = require('./usersData.json');
+const propertyData = require('./propertiesData.json');
+const reviewData = require('./reviewsData.json');
+const leaseData = require('./leasesData.json');
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
 
     // Bulk create users with individual hooks to handle password hashing, etc.
-    await User.bulkCreate(userData, {
+    await Users.bulkCreate(userData, {
         individualHooks: true,
         returning: true,
     });
 
     // bulk create properties, reviews, and leases
-    await Property.bulkCreate(propertyData);
-    await Review.bulkCreate(reviewData);
-    await Lease.bulkCreate(leaseData);
+    await Properties.bulkCreate(propertyData);
+    await Reviews.bulkCreate(reviewData);
+    await Leases.bulkCreate(leaseData);
 
     console.log('Database seeded!');
     process.exit(0);
