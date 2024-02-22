@@ -41,27 +41,27 @@ router.get('/', async (req, res) => {
 
 // GET one property with its reviews and leases
 router.get('/properties/:id', async (req, res) => {
-    try {
+    // try {
         const propertyData = await Properties.findByPk(req.params.id, {
             include: [
                 {
                     model: Users,
                     attributes: ['name'],
                 },
-                {
-                    model: Reviews,
-                    include: [
-                        {
-                            model: Users,
-                            attributes: ['name'],
-                        },
-                    ],
-                },
-                {
-                    model: Leases,
-                    attributes: ['startDate', 'endDate', 'rent_amount'],
-                    include: [{ model: Users, attributes: ['name'] }],
-                },
+                // {
+                //     model: Reviews,
+                //     include: [
+                //         {
+                //             model: Users,
+                //             attributes: ['name'],
+                //         },
+                //     ],
+                // },
+                // {
+                //     model: Leases,
+                //     attributes: ['startDate', 'endDate', 'rent_amount'],
+                //     include: [{ model: Users, attributes: ['name'] }],
+                // },
             ],
         });
 
@@ -77,9 +77,9 @@ router.get('/properties/:id', async (req, res) => {
             user_id: req.session.user_id,
             isAuthor: property.isAuthor,
         });
-    } catch (err) {
-        res.status(500).json(err);
-    }
+    // } catch (err) {
+    //     res.status(500).json(err);
+    // }
 });
 
 // Use withAuth helper to prevent access to route

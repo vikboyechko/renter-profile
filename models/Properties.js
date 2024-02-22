@@ -26,18 +26,18 @@ Properties.init(
         },
         city: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         state: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [2, 2],
-            },
+            allowNull: true,
+            // validate: {
+            //     len: [2, 2],
+            // },
         },
         zip: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         user_id: {
             type: DataTypes.INTEGER,
