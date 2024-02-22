@@ -1,16 +1,27 @@
-// Dashboard handler for logged in renter users to create, update, and delete posts
+// Dashboard handler for logged in renter users to create, update, and delete addresses and other info
 
-// Function to handle the new post form
+// Function to handle the new address form
 const newFormHandler = async (event) => {
     event.preventDefault();
 
-    const title = document.querySelector('#post-title').value.trim();
-    const content = document.querySelector('#post-content').value.trim();
+    const addressName = document.querySelector('#address-name').value.trim();
+    const addressLine1 = document.querySelector('#address-line1').value.trim();
+    const addressLine2 = document.querySelector('#address-line2').value.trim();
+    const addressCity = document.querySelector('#address-city').value.trim();
+    const addressState = document.querySelector('#address-state').value.trim();
+    const addressZip = document.querySelector('#address-zip').value.trim();
 
-    if (title && content) {
+    if (addressLine1 && addressCity && addressState && addressZip) {
         const response = await fetch(`/api/properties`, {
             method: 'POST',
-            body: JSON.stringify({ title, content }),
+            body: JSON.stringify({
+                name: addressName,
+                address1: addressLine1,
+                address2: addressLine2,
+                city: addressCity,
+                state: addressState,
+                zip: addressZip,
+            }),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -19,7 +30,7 @@ const newFormHandler = async (event) => {
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert('Failed to publish property');
+            alert('Failed to add property');
         }
     }
 };
@@ -58,7 +69,7 @@ const delButtonHandler = async (event) => {
     }
 };
 
-document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+document.querySelector('.new-address-form').addEventListener('submit', newFormHandler);
 
 // Attach event listener to delete button on the post page
 document.querySelectorAll('.btn-delete').forEach((button) => {

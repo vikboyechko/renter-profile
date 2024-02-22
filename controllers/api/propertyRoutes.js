@@ -56,7 +56,6 @@ router.put('/update/:id', async (req, res) => {
         propertyData.city = city;
         propertyData.state = state;
         propertyData.zip = zip;
-        propertyData.date_created = new Date();
 
         await propertyData.save();
 

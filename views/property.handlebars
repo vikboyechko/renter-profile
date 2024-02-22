@@ -1,0 +1,46 @@
+<!-- Property public profile page -->
+<div class="container mt-5">
+    <h1>Property Details</h1>
+    <div class="card mb-3">
+        <div class="card-body">
+            {{#if name.length}}
+            <h2 class="card-title">{{name}}</h2>
+            {{else}}
+            <h2 class="card-title">{{address1}}</h2>
+            {{/if}}
+            <h5>Address: {{address1}} {{address2}}, {{city}}, {{state}} {{zip}}</h5>
+            <p>Managed by: {{user.name}} ({{user.email}}, {{user.phone}})</p>
+        </div>
+    </div>
+
+    {{#if reviews.length}}
+    <h3>Reviews</h3>
+    {{#each reviews}}
+    <div class="card mb-2">
+        <div class="card-body">
+            <h5 class="card-title">Review by {{Reviewer.name}}</h5>
+            <p class="card-text">{{this.content}}</p>
+            <p class="card-text"><small class="text-muted">Posted on {{format_date this.created_at}}</small></p>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <p>No reviews yet.</p>
+    {{/if}}
+
+    {{#if leases.length}}
+    <h3>Renters</h3>
+    {{#each leases}}
+    <div class="card mb-2">
+        <div class="card-body">
+            <h5 class="card-title">{{this.renter.name}}</h5>
+            <p>Lease Start Date: {{format_date this.start_date}}</p>
+            <p>Lease End Date: {{format_date this.end_date}}</p>
+            <p>Rent Amount: ${{this.rent_amount}}</p>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <p>No renters have been recorded for this property.</p>
+    {{/if}}
+</div>
