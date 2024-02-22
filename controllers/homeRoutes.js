@@ -39,43 +39,54 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET one property with its reviews and leases
+// GET one property with its reviews and renters
 router.get('/properties/:id', async (req, res) => {
+    console.log(res);
     try {
         const propertyData = await Properties.findByPk(req.params.id, {
             include: [
                 {
                     model: Users,
-                    attributes: ['name'],
+                    attributes: ['name', 'email', 'phone'], // property manager's name, email, and phone
                 },
                 {
                     model: Reviews,
                     include: [
                         {
                             model: Users,
-                            attributes: ['name'],
+                            as: 'Reviewer',
+                            attributes: ['name'], // reviewer's name
                         },
                     ],
+                    attributes: ['content', 'created_at'], // review's rating, content, and creation date
                 },
                 {
                     model: Leases,
-                    attributes: ['startDate', 'endDate', 'rent_amount'],
-                    include: [{ model: Users, attributes: ['name'] }],
+                    as: 'leases',
+                    include: [
+                        {
+                            model: Users,
+                            as: 'renter',
+                            attributes: ['name'], // renter's name
+                        },
+                    ],
+                    attributes: ['start_date', 'end_date', 'rent_amount'], // lease's start and end date
                 },
             ],
         });
 
+        if (!propertyData) {
+            res.status(404).send('Property not found');
+            return;
+        }
+
         const property = propertyData.get({ plain: true });
 
-        // adds a new isAuthor property to the property object, so if the logged-in user is the property address author, they can see the edit and delete buttons
-        property.isAuthor = req.session.user_id === property.user_id;
-
-        // passes the serialized data into the session flag, along with the logged-in user's id and the isAuthor property
+        // passes the serialized data into the template
         res.render('property', {
-            ...property,
+            ...property, // include the property details, manager info, reviews, and renters
             logged_in: req.session.logged_in,
             user_id: req.session.user_id,
-            isAuthor: property.isAuthor,
         });
     } catch (err) {
         res.status(500).json(err);
