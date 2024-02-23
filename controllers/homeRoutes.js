@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Users, Properties, Reviews, Leases } = require('../models');
+const { Users, Properties, Reviews, Leases, Documents } = require('../models');
 const withAuth = require('../utils/auth'); // custom helper for authentication
 
 // GET all properties for homepage
@@ -14,6 +14,15 @@ router.get('/', async (req, res) => {
                 {
                     model: Reviews,
                     attributes: ['content', 'created_at'],
+                },
+                {
+                    model: Documents,
+                    as: 'PropertyDocuments',
+                    attributes: ['link'],
+                    where: {
+                        type: 'property_image',
+                    },
+                    required: false, //
                 },
             ],
         });
@@ -130,11 +139,22 @@ router.get('/properties/:id', async (req, res) => {
             return;
         }
 
+        // Get property images
+        const propertyImages = await Documents.findAll({
+            where: {
+                property_id: req.params.id,
+                type: 'property_image', // this is to make sure it's the property image and not the property managers profile pic
+            },
+            attributes: ['link'], //
+        });
+
         const property = propertyData.get({ plain: true });
+        const images = propertyImages.map((image) => image.get({ plain: true }));
 
         // passes the serialized data into the template
         res.render('property', {
             ...property, // include the property details, manager info, reviews, and renters
+            images,
             logged_in: req.session.logged_in,
             user_id: req.session.user_id,
         });
