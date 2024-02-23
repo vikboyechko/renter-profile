@@ -13,6 +13,15 @@
         </div>
     </div>
 
+    <div class="property-images">
+    <h3>Property Images</h3>
+    {{#each images}}
+        <div class="property-image">
+            <img src="{{this.link}}" alt="Property Image" class="img-fluid mb-3" />
+        </div>
+    {{/each}}
+    </div>
+
     {{#if reviews.length}}
     <h3>Reviews</h3>
     {{#each reviews}}
