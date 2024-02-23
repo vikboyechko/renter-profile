@@ -5,6 +5,7 @@ const Leases = require('./Leases');
 
 // User and Property associations
 Users.hasMany(Properties, {
+    as: 'UserRentals', // alias for user -> property
     foreignKey: 'user_id',
     onDelete: 'CASCADE',
 });

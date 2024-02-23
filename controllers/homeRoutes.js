@@ -39,9 +39,59 @@ router.get('/', async (req, res) => {
     }
 });
 
+// GET one renter with their reviews and rental history
+router.get('/renters/:id', async (req, res) => {
+    try {
+        const renterData = await Users.findByPk(req.params.id, {
+            include: [
+                {
+                    model: Properties,
+                    as: 'UserRentals',
+                    attributes: ['id', 'name', 'address1', 'address2', 'city', 'state', 'zip'], // property's address
+                    include: [
+                        {
+                            model: Leases,
+                            attributes: ['start_date', 'end_date', 'rent_amount'],
+                            as: 'leases',
+                        },
+                    ],
+                },
+                {
+                    model: Reviews,
+                    as: 'ReceivedReviews',
+                    include: [
+                        {
+                            model: Users,
+                            as: 'Reviewer',
+                            attributes: ['name'], // reviewer's name
+                        },
+                    ],
+                    attributes: ['content', 'rating', 'created_at'], // review's rating, content, and creation date
+                },
+            ],
+        });
+
+        if (!renterData) {
+            res.status(404).send('Renter not found');
+            return;
+        }
+
+        const renter = renterData.get({ plain: true });
+
+        // passes the serialized data into the template
+        // res.json(renter);
+        res.render('renter', {
+            ...renter, // include the property details, manager info, reviews, and renters
+            logged_in: req.session.logged_in,
+            user_id: req.session.user_id,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 // GET one property with its reviews and renters
 router.get('/properties/:id', async (req, res) => {
-    console.log(res);
     try {
         const propertyData = await Properties.findByPk(req.params.id, {
             include: [
