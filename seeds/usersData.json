@@ -19,5 +19,145 @@
     "password": "password12345",
     "phone": "952-789-0123",
     "role": "renter"
+  },
+  {
+    "name": "Donald Harmon",
+    "email": "paula00@yahoo.com",
+    "password": "password12345",
+    "phone": "676-212-7501",
+    "role": "property_manager"
+  },
+  {
+    "name": "Nicholas Lee",
+    "email": "youngdanielle@yahoo.com",
+    "password": "password12345",
+    "phone": "001-906-388-1382",
+    "role": "property_manager"
+  },
+  {
+    "name": "Christopher Bennett",
+    "email": "wmckinney@gmail.com",
+    "password": "password12345",
+    "phone": "(928)652-4734",
+    "role": "property_manager"
+  },
+  {
+    "name": "Lori Woods",
+    "email": "christopher17@hamilton.com",
+    "password": "password12345",
+    "phone": "(655)891-1161",
+    "role": "renter"
+  },
+  {
+    "name": "Chloe Church",
+    "email": "dwashington@morris-clark.biz",
+    "password": "password12345",
+    "phone": "001-585-011-1823x9218",
+    "role": "property_manager"
+  },
+  {
+    "name": "Jane Cooley",
+    "email": "kimberly12@hotmail.com",
+    "password": "password12345",
+    "phone": "523.249.6250",
+    "role": "renter"
+  },
+  {
+    "name": "Michael Perez",
+    "email": "kimberly19@barnett-burgess.com",
+    "password": "password12345",
+    "phone": "582-428-8819",
+    "role": "property_manager"
+  },
+  {
+    "name": "Mrs. Kelly Jacobs",
+    "email": "erik83@gmail.com",
+    "password": "password12345",
+    "phone": "160-319-4220",
+    "role": "property_manager"
+  },
+  {
+    "name": "Daniel Sanchez",
+    "email": "williammacdonald@conley.com",
+    "password": "password12345",
+    "phone": "120.751.8791",
+    "role": "property_manager"
+  },
+  {
+    "name": "Michael Kennedy",
+    "email": "rhodges@moreno.com",
+    "password": "password12345",
+    "phone": "616-205-1972",
+    "role": "property_manager"
+  },
+  {
+    "name": "Julie Patterson",
+    "email": "sarahwilliams@rivera.com",
+    "password": "password12345",
+    "phone": "092-496-9782",
+    "role": "renter"
+  },
+  {
+    "name": "Debra Dorsey",
+    "email": "lisa33@hotmail.com",
+    "password": "password12345",
+    "phone": "+1-719-461-6743",
+    "role": "renter"
+  },
+  {
+    "name": "Mark Velazquez",
+    "email": "dallen@hotmail.com",
+    "password": "password12345",
+    "phone": "125.458.2039",
+    "role": "renter"
+  },
+  {
+    "name": "Natasha Riddle",
+    "email": "thomas02@yahoo.com",
+    "password": "password12345",
+    "phone": "793.221.3044",
+    "role": "property_manager"
+  },
+  {
+    "name": "Shelly Serrano",
+    "email": "marie34@mccoy-phillips.com",
+    "password": "password12345",
+    "phone": "705-321-6402",
+    "role": "property_manager"
+  },
+  {
+    "name": "Duane Gonzalez",
+    "email": "amanda53@gmail.com",
+    "password": "password12345",
+    "phone": "(553) 736-7249",
+    "role": "property_manager"
+  },
+  {
+    "name": "Brian Lewis",
+    "email": "vasquezmichelle@wilson.org",
+    "password": "password12345",
+    "phone": "(633)551-1531",
+    "role": "property_manager"
+  },
+  {
+    "name": "Tracey Chan",
+    "email": "jefferygarrison@lewis.com",
+    "password": "password12345",
+    "phone": "+1-137-943-3005",
+    "role": "property_manager"
+  },
+  {
+    "name": "Spencer Anderson",
+    "email": "zachary65@hatfield-fernandez.com",
+    "password": "password12345",
+    "phone": "(729)523-5166",
+    "role": "property_manager"
+  },
+  {
+    "name": "Cynthia Henderson",
+    "email": "clarence70@perry.com",
+    "password": "password12345",
+    "phone": "669-613-6271",
+    "role": "renter"
   }
 ]
