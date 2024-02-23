@@ -1,19 +1,452 @@
 [
-  {
-    "name": "Sunny Apartments",
-    "address1": "123 Sunny St",
-    "address2": "Apt 2",
-    "city": "Sunnyvale",
-    "state": "CA",
-    "zip": "94086",
-    "user_id": 1
-  },
-  {
-    "name": "Cozy Cottage",
-    "address1": "456 Cozy Lane",
-    "city": "Cozytown",
-    "state": "CT",
-    "zip": "06001",
-    "user_id": 2
-  }
+    {
+        "name": "Fowler Way Suites",
+        "address1": "7904 Johnny Mission",
+        "address2": "",
+        "city": "East John",
+        "state": "HI",
+        "zip": "41705",
+        "user_id": 2
+    },
+    {
+        "name": "Jenny Crest Villas",
+        "address1": "40638 Kevin Manor",
+        "address2": "",
+        "city": "Taylorborough",
+        "state": "TX",
+        "zip": "66178",
+        "user_id": 11
+    },
+    {
+        "name": "Kemp Fields Residences",
+        "address1": "0239 Paul Pike",
+        "address2": "Suite 905",
+        "city": "Rothtown",
+        "state": "PA",
+        "zip": "29882",
+        "user_id": 5
+    },
+    {
+        "name": "Burton Throughway Villas",
+        "address1": "4764 Thornton Neck",
+        "address2": "",
+        "city": "Seanburgh",
+        "state": "CO",
+        "zip": "43885",
+        "user_id": 21
+    },
+    {
+        "name": "Sara Run Apartments",
+        "address1": "63938 Kim Throughway Suite 607",
+        "address2": "",
+        "city": "New Marymouth",
+        "state": "OR",
+        "zip": "87716",
+        "user_id": 7
+    },
+    {
+        "name": "Brandon Tunnel Suites",
+        "address1": "774 Berry Prairie",
+        "address2": "Apt. 943",
+        "city": "Lopezborough",
+        "state": "NY",
+        "zip": "39049",
+        "user_id": 22
+    },
+    {
+        "name": "Donald Garden Villas",
+        "address1": "489 Jessica Canyon Apt. 100",
+        "address2": "",
+        "city": "Port Timothy",
+        "state": "VA",
+        "zip": "61561",
+        "user_id": 18
+    },
+    {
+        "name": "Cynthia Mill Apartments",
+        "address1": "16060 Daniel Points Apt. 009",
+        "address2": "Apt. 540",
+        "city": "Currybury",
+        "state": "AZ",
+        "zip": "39446",
+        "user_id": 1
+    },
+    {
+        "name": "Hall Plains Apartments",
+        "address1": "52733 Haynes Field",
+        "address2": "Apt. 255",
+        "city": "Lawsonbury",
+        "state": "KY",
+        "zip": "68252",
+        "user_id": 16
+    },
+    {
+        "name": "Leslie Glen Residences",
+        "address1": "37437 Robert Summit Suite 699",
+        "address2": "",
+        "city": "Richardsonburgh",
+        "state": "AR",
+        "zip": "25006",
+        "user_id": 19
+    },
+    {
+        "name": "Vicki Lakes Suites",
+        "address1": "56197 Collins Terrace Suite 418",
+        "address2": "Apt. 915",
+        "city": "New Amy",
+        "state": "MN",
+        "zip": "17151",
+        "user_id": 4
+    },
+    {
+        "name": "Smith Branch Suites",
+        "address1": "2926 Wayne Drive",
+        "address2": "Suite 909",
+        "city": "Port Laurenchester",
+        "state": "CT",
+        "zip": "85558",
+        "user_id": 2
+    },
+    {
+        "name": "Hudson Squares Apartments",
+        "address1": "80982 Stephanie Village",
+        "address2": "",
+        "city": "Davidstad",
+        "state": "PA",
+        "zip": "63162",
+        "user_id": 11
+    },
+    {
+        "name": "Davis Islands Apartments",
+        "address1": "695 Long Station",
+        "address2": "",
+        "city": "West Emily",
+        "state": "VA",
+        "zip": "03585",
+        "user_id": 13
+    },
+    {
+        "name": "Kim Creek Villas",
+        "address1": "3291 Nicholas Isle",
+        "address2": "",
+        "city": "Douglashaven",
+        "state": "AL",
+        "zip": "69688",
+        "user_id": 14
+    },
+    {
+        "name": "Vanessa Lakes Residences",
+        "address1": "3216 Aaron Spring",
+        "address2": "Suite 407",
+        "city": "Yangfort",
+        "state": "DC",
+        "zip": "82200",
+        "user_id": 18
+    },
+    {
+        "name": "Hernandez Key Suites",
+        "address1": "632 Moran Mountain",
+        "address2": "",
+        "city": "Brownstad",
+        "state": "TN",
+        "zip": "83995",
+        "user_id": 2
+    },
+    {
+        "name": "Dalton Stravenue Residences",
+        "address1": "175 Baker River Apt. 839",
+        "address2": "",
+        "city": "North Alexchester",
+        "state": "SD",
+        "zip": "53559",
+        "user_id": 10
+    },
+    {
+        "name": "Duffy Mountains Villas",
+        "address1": "480 Alejandro Cliffs",
+        "address2": "",
+        "city": "Margaretmouth",
+        "state": "CT",
+        "zip": "95357",
+        "user_id": 9
+    },
+    {
+        "name": "Jacqueline Road Residences",
+        "address1": "8522 Riley Pine Suite 458",
+        "address2": "Suite 132",
+        "city": "North Briannamouth",
+        "state": "MS",
+        "zip": "94191",
+        "user_id": 8
+    },
+    {
+        "name": "Alvin Square Residences",
+        "address1": "1455 Ellis River Apt. 074",
+        "address2": "",
+        "city": "Trevorton",
+        "state": "TX",
+        "zip": "42598",
+        "user_id": 7
+    },
+    {
+        "name": "Christopher Valley Apartments",
+        "address1": "395 Clifford Lakes",
+        "address2": "",
+        "city": "Tiffanychester",
+        "state": "NH",
+        "zip": "51026",
+        "user_id": 6
+    },
+    {
+        "name": "Hale Unions Suites",
+        "address1": "827 Vargas Locks Apt. 805",
+        "address2": "Suite 115",
+        "city": "South Amanda",
+        "state": "KY",
+        "zip": "18389",
+        "user_id": 4
+    },
+    {
+        "name": "William Vista Apartments",
+        "address1": "9739 King Haven",
+        "address2": "Suite 793",
+        "city": "Lake Jennifer",
+        "state": "WI",
+        "zip": "99309",
+        "user_id": 22
+    },
+    {
+        "name": "Tucker Port Villas",
+        "address1": "7377 Cross Mountains Apt. 979",
+        "address2": "",
+        "city": "West Williamhaven",
+        "state": "WY",
+        "zip": "51360",
+        "user_id": 21
+    },
+    {
+        "name": "Ferguson Mill Residences",
+        "address1": "004 Thomas Fields Apt. 551",
+        "address2": "",
+        "city": "South Kennethshire",
+        "state": "MI",
+        "zip": "41473",
+        "user_id": 17
+    },
+    {
+        "name": "Ricardo Inlet Villas",
+        "address1": "854 Brenda Crest Apt. 327",
+        "address2": "Suite 814",
+        "city": "Derrickport",
+        "state": "PA",
+        "zip": "12431",
+        "user_id": 11
+    },
+    {
+        "name": "Paul Radial Suites",
+        "address1": "2676 Gates Valley Suite 171",
+        "address2": "Apt. 840",
+        "city": "Castrochester",
+        "state": "WV",
+        "zip": "89888",
+        "user_id": 15
+    },
+    {
+        "name": "Powell Springs Apartments",
+        "address1": "2130 Christopher Radial Suite 890",
+        "address2": "",
+        "city": "Charlesmouth",
+        "state": "UT",
+        "zip": "01788",
+        "user_id": 10
+    },
+    {
+        "name": "Angie Squares Residences",
+        "address1": "416 Eaton Green Suite 671",
+        "address2": "Suite 505",
+        "city": "South Kyleside",
+        "state": "WI",
+        "zip": "72837",
+        "user_id": 3
+    },
+    {
+        "name": "Jenkins Loaf Villas",
+        "address1": "58829 Michelle Wells",
+        "address2": "Apt. 096",
+        "city": "Wallaceport",
+        "state": "PA",
+        "zip": "07694",
+        "user_id": 20
+    },
+    {
+        "name": "White Union Apartments",
+        "address1": "65165 Aguilar Isle",
+        "address2": "Suite 909",
+        "city": "Timothybury",
+        "state": "LA",
+        "zip": "01065",
+        "user_id": 19
+    },
+    {
+        "name": "Cody Hills Residences",
+        "address1": "73698 Jason Overpass Suite 772",
+        "address2": "Apt. 728",
+        "city": "Hatfieldfort",
+        "state": "DE",
+        "zip": "17289",
+        "user_id": 1
+    },
+    {
+        "name": "Bryant Light Suites",
+        "address1": "53067 Burns Mill",
+        "address2": "Apt. 060",
+        "city": "Chapmanfort",
+        "state": "ME",
+        "zip": "80506",
+        "user_id": 13
+    },
+    {
+        "name": "Kelsey Lodge Apartments",
+        "address1": "35673 Pamela Fall Suite 516",
+        "address2": "",
+        "city": "West Jackborough",
+        "state": "OK",
+        "zip": "19184",
+        "user_id": 22
+    },
+    {
+        "name": "Brooks Heights Residences",
+        "address1": "2606 Gibson Summit",
+        "address2": "Suite 873",
+        "city": "West Randymouth",
+        "state": "RI",
+        "zip": "50725",
+        "user_id": 18
+    },
+    {
+        "name": "Miller Camp Apartments",
+        "address1": "3232 Monroe Highway Suite 283",
+        "address2": "Apt. 673",
+        "city": "Matthewmouth",
+        "state": "TX",
+        "zip": "98681",
+        "user_id": 12
+    },
+    {
+        "name": "Durham Valley Apartments",
+        "address1": "07639 George Expressway",
+        "address2": "Apt. 539",
+        "city": "South Thomasberg",
+        "state": "GA",
+        "zip": "85327",
+        "user_id": 3
+    },
+    {
+        "name": "Wright Stream Apartments",
+        "address1": "795 Ross Forks Suite 150",
+        "address2": "Apt. 200",
+        "city": "Dominguezshire",
+        "state": "NC",
+        "zip": "81071",
+        "user_id": 6
+    },
+    {
+        "name": "Martin Alley Suites",
+        "address1": "574 Anderson Bypass",
+        "address2": "Suite 207",
+        "city": "Stoneside",
+        "state": "GA",
+        "zip": "46117",
+        "user_id": 9
+    },
+    {
+        "name": "Cameron Trafficway Suites",
+        "address1": "24076 Carolyn Court Apt. 346",
+        "address2": "Suite 541",
+        "city": "West Julie",
+        "state": "WI",
+        "zip": "14738",
+        "user_id": 15
+    },
+    {
+        "name": "Boyle Hill Apartments",
+        "address1": "986 Green Creek",
+        "address2": "Suite 274",
+        "city": "Millerfort",
+        "state": "MN",
+        "zip": "85858",
+        "user_id": 9
+    },
+    {
+        "name": "Rose Pine Suites",
+        "address1": "0728 Sutton Lane",
+        "address2": "",
+        "city": "Lake Angelchester",
+        "state": "IN",
+        "zip": "62059",
+        "user_id": 19
+    },
+    {
+        "name": "John Trafficway Residences",
+        "address1": "8797 Christina Locks",
+        "address2": "",
+        "city": "Lake Teresaville",
+        "state": "OR",
+        "zip": "60074",
+        "user_id": 17
+    },
+    {
+        "name": "Wells Light Villas",
+        "address1": "728 Megan Turnpike Suite 655",
+        "address2": "",
+        "city": "East Todd",
+        "state": "ME",
+        "zip": "78380",
+        "user_id": 11
+    },
+    {
+        "name": "Marcia Gateway Villas",
+        "address1": "25067 Jacob Ville",
+        "address2": "Apt. 065",
+        "city": "Katherinemouth",
+        "state": "VA",
+        "zip": "35351",
+        "user_id": 14
+    },
+    {
+        "name": "Alexander Mountain Suites",
+        "address1": "1739 Evans Fort Suite 624",
+        "address2": "",
+        "city": "New Sarah",
+        "state": "MN",
+        "zip": "73735",
+        "user_id": 13
+    },
+    {
+        "name": "Sandra Gardens Villas",
+        "address1": "721 Sandra Road",
+        "address2": "",
+        "city": "Brianside",
+        "state": "WA",
+        "zip": "85320",
+        "user_id": 5
+    },
+    {
+        "name": "Bradley Squares Villas",
+        "address1": "62820 Brett Landing Apt. 045",
+        "address2": "",
+        "city": "Parsonsfort",
+        "state": "NH",
+        "zip": "70007",
+        "user_id": 3
+    },
+    {
+        "name": "Sonya Underpass Apartments",
+        "address1": "7322 Sarah Rue Apt. 296",
+        "address2": "",
+        "city": "Jensenchester",
+        "state": "PA",
+        "zip": "89999",
+        "user_id": 16
+    }
 ]

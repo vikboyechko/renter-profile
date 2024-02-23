@@ -1,18 +1,402 @@
 [
-  {
-    "content": "Great place to live!",
-    "rating": 5,
-    "is_published": true,
-    "reviewer_id": 1,
-    "reviewee_id": 1,
-    "reviewee_type": "property"
-  },
-  {
-    "content": "Needs improvement.",
-    "rating": 2,
-    "is_published": true,
-    "reviewer_id": 2,
-    "reviewee_id": 2,
-    "reviewee_type": "property"
-  }
+    {
+        "content": "Loved the location of this property, very convenient and quiet.",
+        "rating": 4,
+        "is_published": true,
+        "reviewer_id": 22,
+        "reviewee_id": 21,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Excellent tenant, took great care of the apartment.",
+        "rating": 4,
+        "is_published": true,
+        "reviewer_id": 5,
+        "reviewee_id": 10,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "Very responsible and always paid rent on time.",
+        "rating": 8,
+        "is_published": true,
+        "reviewer_id": 16,
+        "reviewee_id": 1,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "Excellent tenant, took great care of the apartment.",
+        "rating": 10,
+        "is_published": true,
+        "reviewer_id": 20,
+        "reviewee_id": 21,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "Would definitely recommend this place to friends and family.",
+        "rating": 10,
+        "is_published": true,
+        "reviewer_id": 20,
+        "reviewee_id": 15,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Would definitely recommend this place to friends and family.",
+        "rating": 10,
+        "is_published": true,
+        "reviewer_id": 19,
+        "reviewee_id": 14,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "The property manager was very helpful and responsive.",
+        "rating": 9,
+        "is_published": true,
+        "reviewer_id": 3,
+        "reviewee_id": 19,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Difficult to communicate with and left the property in a mess.",
+        "rating": 6,
+        "is_published": true,
+        "reviewer_id": 1,
+        "reviewee_id": 20,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "Excellent tenant, took great care of the apartment.",
+        "rating": 10,
+        "is_published": true,
+        "reviewer_id": 2,
+        "reviewee_id": 8,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "Difficult to communicate with and left the property in a mess.",
+        "rating": 1,
+        "is_published": true,
+        "reviewer_id": 18,
+        "reviewee_id": 9,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "The property manager was very helpful and responsive.",
+        "rating": 4,
+        "is_published": true,
+        "reviewer_id": 22,
+        "reviewee_id": 13,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Difficult to communicate with and left the property in a mess.",
+        "rating": 9,
+        "is_published": true,
+        "reviewer_id": 18,
+        "reviewee_id": 9,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "Becky was an excellent tenant, she took care of the apartment and made sure to leave it better than she found it, all around excellent renter!",
+        "rating": 10,
+        "is_published": true,
+        "reviewer_id": 21,
+        "reviewee_id": 16,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "Becky was an excellent tenant, she took care of the apartment and made sure to leave it better than she found it, all around excellent renter!",
+        "rating": 5,
+        "is_published": true,
+        "reviewer_id": 3,
+        "reviewee_id": 4,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "This rental property is amazing, everything is clean and the service was awesome.",
+        "rating": 5,
+        "is_published": true,
+        "reviewer_id": 19,
+        "reviewee_id": 16,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "This rental property is amazing, everything is clean and the service was awesome.",
+        "rating": 7,
+        "is_published": true,
+        "reviewer_id": 6,
+        "reviewee_id": 15,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "This rental property is amazing, everything is clean and the service was awesome.",
+        "rating": 8,
+        "is_published": true,
+        "reviewer_id": 13,
+        "reviewee_id": 9,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Would definitely recommend this place to friends and family.",
+        "rating": 10,
+        "is_published": true,
+        "reviewer_id": 15,
+        "reviewee_id": 5,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "The property manager was very helpful and responsive.",
+        "rating": 10,
+        "is_published": true,
+        "reviewer_id": 21,
+        "reviewee_id": 21,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Would definitely recommend this place to friends and family.",
+        "rating": 5,
+        "is_published": true,
+        "reviewer_id": 23,
+        "reviewee_id": 2,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "A pleasure to have as a renter, very respectful to the property.",
+        "rating": 9,
+        "is_published": true,
+        "reviewer_id": 19,
+        "reviewee_id": 21,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "Loved the location of this property, very convenient and quiet.",
+        "rating": 1,
+        "is_published": true,
+        "reviewer_id": 12,
+        "reviewee_id": 6,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "The property manager was very helpful and responsive.",
+        "rating": 8,
+        "is_published": true,
+        "reviewer_id": 16,
+        "reviewee_id": 12,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "The property manager was very helpful and responsive.",
+        "rating": 6,
+        "is_published": true,
+        "reviewer_id": 15,
+        "reviewee_id": 23,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Very responsible and always paid rent on time.",
+        "rating": 4,
+        "is_published": true,
+        "reviewer_id": 11,
+        "reviewee_id": 1,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "Excellent tenant, took great care of the apartment.",
+        "rating": 6,
+        "is_published": true,
+        "reviewer_id": 8,
+        "reviewee_id": 21,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "This rental property is amazing, everything is clean and the service was awesome.",
+        "rating": 6,
+        "is_published": true,
+        "reviewer_id": 12,
+        "reviewee_id": 8,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "This rental property is amazing, everything is clean and the service was awesome.",
+        "rating": 9,
+        "is_published": true,
+        "reviewer_id": 2,
+        "reviewee_id": 20,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Loved the location of this property, very convenient and quiet.",
+        "rating": 7,
+        "is_published": true,
+        "reviewer_id": 7,
+        "reviewee_id": 18,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Becky was an excellent tenant, she took care of the apartment and made sure to leave it better than she found it, all around excellent renter!",
+        "rating": 10,
+        "is_published": true,
+        "reviewer_id": 3,
+        "reviewee_id": 17,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "Difficult to communicate with and left the property in a mess.",
+        "rating": 8,
+        "is_published": true,
+        "reviewer_id": 9,
+        "reviewee_id": 16,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "This rental property is amazing, everything is clean and the service was awesome.",
+        "rating": 1,
+        "is_published": true,
+        "reviewer_id": 3,
+        "reviewee_id": 5,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "A pleasure to have as a renter, very respectful to the property.",
+        "rating": 8,
+        "is_published": true,
+        "reviewer_id": 18,
+        "reviewee_id": 5,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "Excellent tenant, took great care of the apartment.",
+        "rating": 10,
+        "is_published": true,
+        "reviewer_id": 1,
+        "reviewee_id": 15,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "Would definitely recommend this place to friends and family.",
+        "rating": 8,
+        "is_published": true,
+        "reviewer_id": 12,
+        "reviewee_id": 19,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "This rental property is amazing, everything is clean and the service was awesome.",
+        "rating": 10,
+        "is_published": true,
+        "reviewer_id": 2,
+        "reviewee_id": 13,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Very responsible and always paid rent on time.",
+        "rating": 7,
+        "is_published": true,
+        "reviewer_id": 6,
+        "reviewee_id": 22,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "A pleasure to have as a renter, very respectful to the property.",
+        "rating": 8,
+        "is_published": true,
+        "reviewer_id": 19,
+        "reviewee_id": 3,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "Excellent tenant, took great care of the apartment.",
+        "rating": 1,
+        "is_published": true,
+        "reviewer_id": 4,
+        "reviewee_id": 14,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "The property manager was very helpful and responsive.",
+        "rating": 2,
+        "is_published": true,
+        "reviewer_id": 14,
+        "reviewee_id": 1,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Not what was expected, the property needs a lot of maintenance.",
+        "rating": 9,
+        "is_published": true,
+        "reviewer_id": 18,
+        "reviewee_id": 13,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Would definitely recommend this place to friends and family.",
+        "rating": 3,
+        "is_published": true,
+        "reviewer_id": 22,
+        "reviewee_id": 17,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Not what was expected, the property needs a lot of maintenance.",
+        "rating": 9,
+        "is_published": true,
+        "reviewer_id": 6,
+        "reviewee_id": 2,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "This rental property is amazing, everything is clean and the service was awesome.",
+        "rating": 4,
+        "is_published": true,
+        "reviewer_id": 12,
+        "reviewee_id": 19,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Difficult to communicate with and left the property in a mess.",
+        "rating": 4,
+        "is_published": true,
+        "reviewer_id": 19,
+        "reviewee_id": 8,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "The property manager was very helpful and responsive.",
+        "rating": 2,
+        "is_published": true,
+        "reviewer_id": 8,
+        "reviewee_id": 16,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Would definitely recommend this place to friends and family.",
+        "rating": 10,
+        "is_published": true,
+        "reviewer_id": 9,
+        "reviewee_id": 17,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Excellent tenant, took great care of the apartment.",
+        "rating": 6,
+        "is_published": true,
+        "reviewer_id": 14,
+        "reviewee_id": 11,
+        "reviewee_type": "user"
+    },
+    {
+        "content": "This rental property is amazing, everything is clean and the service was awesome.",
+        "rating": 2,
+        "is_published": true,
+        "reviewer_id": 1,
+        "reviewee_id": 17,
+        "reviewee_type": "property"
+    },
+    {
+        "content": "Becky was an excellent tenant, she took care of the apartment and made sure to leave it better than she found it, all around excellent renter!",
+        "rating": 3,
+        "is_published": true,
+        "reviewer_id": 20,
+        "reviewee_id": 16,
+        "reviewee_type": "user"
+    }
 ]
