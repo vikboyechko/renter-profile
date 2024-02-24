@@ -12,16 +12,27 @@ Documents.init(
             autoIncrement: true,
         },
         type: {
-            type: Datatypes.STRING(50),
-            allowNull: true,
+            type: DataTypes.STRING(50),
+            allowNull: false,
+            validate: {
+                isIn: [['profile_pic', 'property_image']],
+            },
         },
         link: {
-            type: Datatypes.STRING(256),
+            type: DataTypes.STRING(256),
             allowNull: true,
+        },
+        property_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true, // property images are optional
+            references: {
+                model: 'properties',
+                key: 'id',
+            },
         },
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: false, // user id is not optional
             references: {
                 model: 'users',
                 key: 'id',

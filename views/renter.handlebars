@@ -1,0 +1,53 @@
+<!-- Renter public profile page -->
+<div class="container mt-5">
+    <h1>Renter Details</h1>
+    <div class="card mb-3">
+        <div class="card-body">
+         <h2 class="card-title">{{name}}</h2>
+            <h5 class="card-subtitle mb-2 text-muted">Email: {{email}}</h5>
+        </div>
+    </div>
+
+    {{#if UserRentals.length}}
+    <h3>Rental History</h3>
+    {{#each UserRentals as |property|}}
+    <div class="card mb-2">
+        <div class="card-body">
+            <h5 class="card-title">{{property.name}}</h5>
+            <h5 class="card-title">{{property.address1}}</h5>
+            <p class="card-text">{{property.address2}}</p>
+            <p class="card-text">{{property.city}}, {{property.state}} {{property.zip}}</p>
+            {{#if property.leases.length}}
+            {{#each property.leases}}
+            <p>Lease Start Date: {{format_date this.start_date}}</p>
+            <p>Lease End Date: {{format_date this.end_date}}</p>
+            <p>Rent Amount: ${{this.rent_amount}}</p>
+            {{/each}}
+            {{else}}
+            <p>No additional information for this rental.</p>
+            {{/if}}
+            <a href="/properties/{{property.id}}" class="btn btn-primary">View Property</a>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <p>No properties yet.</p>
+    {{/if}}
+
+    {{#if ReceivedReviews.length}}
+    <h3>Reviews</h3>
+    {{#each ReceivedReviews}}
+    <div class="card mb-2">
+        <div class="card-body">
+            <h5 class="card-title">Review by {{Reviewer.name}}</h5>
+            <p class="card-text">{{this.content}}</p>
+            <p class="card-text">Rating: {{this.rating}}</p>
+            <p class="card-text"><small class="text-muted">Posted on {{format_date this.created_at}}</small></p>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <p>No reviews yet.</p>
+    {{/if}}
+
+</div>

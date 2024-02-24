@@ -2,9 +2,11 @@ const Users = require('./Users');
 const Properties = require('./Properties');
 const Reviews = require('./Reviews');
 const Leases = require('./Leases');
+const Documents = require('./Documents');
 
 // User and Property associations
 Users.hasMany(Properties, {
+    as: 'UserRentals', // alias for user -> property
     foreignKey: 'user_id',
     onDelete: 'CASCADE',
 });
@@ -86,4 +88,26 @@ Leases.belongsTo(Users, {
     as: 'renter', // alias for accessing Lease -> User
 });
 
-module.exports = { Users, Properties, Reviews, Leases };
+// User and Document association
+Users.hasMany(Documents, {
+    foreignKey: 'user_id',
+    as: 'UserDocuments', //
+});
+
+Documents.belongsTo(Users, {
+    foreignKey: 'user_id',
+    as: 'user',
+});
+
+// Property and Document association
+Properties.hasMany(Documents, {
+    foreignKey: 'property_id',
+    as: 'PropertyDocuments',
+});
+
+Documents.belongsTo(Properties, {
+    foreignKey: 'property_id',
+    as: 'property',
+});
+
+module.exports = { Users, Properties, Reviews, Leases, Documents };

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Users, Properties, Reviews, Leases } = require('../models');
+const { Users, Properties, Reviews, Leases, Documents } = require('../models');
 const withAuth = require('../utils/auth'); // custom helper for authentication
 
 // GET all properties for homepage
@@ -14,6 +14,15 @@ router.get('/', async (req, res) => {
                 {
                     model: Reviews,
                     attributes: ['content', 'created_at'],
+                },
+                {
+                    model: Documents,
+                    as: 'PropertyDocuments',
+                    attributes: ['link'],
+                    where: {
+                        type: 'property_image',
+                    },
+                    required: false, //
                 },
             ],
         });
@@ -39,43 +48,115 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET one property with its reviews and leases
+// GET one renter with their reviews and rental history
+router.get('/renters/:id', async (req, res) => {
+    try {
+        const renterData = await Users.findByPk(req.params.id, {
+            include: [
+                {
+                    model: Properties,
+                    as: 'UserRentals',
+                    attributes: ['id', 'name', 'address1', 'address2', 'city', 'state', 'zip'], // property's address
+                    include: [
+                        {
+                            model: Leases,
+                            attributes: ['start_date', 'end_date', 'rent_amount'],
+                            as: 'leases',
+                        },
+                    ],
+                },
+                {
+                    model: Reviews,
+                    as: 'ReceivedReviews',
+                    include: [
+                        {
+                            model: Users,
+                            as: 'Reviewer',
+                            attributes: ['name'], // reviewer's name
+                        },
+                    ],
+                    attributes: ['content', 'rating', 'created_at'], // review's rating, content, and creation date
+                },
+            ],
+        });
+
+        if (!renterData) {
+            res.status(404).send('Renter not found');
+            return;
+        }
+
+        const renter = renterData.get({ plain: true });
+
+        // passes the serialized data into the template
+        // res.json(renter);
+        res.render('renter', {
+            ...renter, // include the property details, manager info, reviews, and renters
+            logged_in: req.session.logged_in,
+            user_id: req.session.user_id,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+// GET one property with its reviews and renters
 router.get('/properties/:id', async (req, res) => {
     // try {
         const propertyData = await Properties.findByPk(req.params.id, {
             include: [
                 {
                     model: Users,
-                    attributes: ['name'],
+                    attributes: ['name', 'email', 'phone'], // property manager's name, email, and phone
                 },
-                // {
-                //     model: Reviews,
-                //     include: [
-                //         {
-                //             model: Users,
-                //             attributes: ['name'],
-                //         },
-                //     ],
-                // },
-                // {
-                //     model: Leases,
-                //     attributes: ['startDate', 'endDate', 'rent_amount'],
-                //     include: [{ model: Users, attributes: ['name'] }],
-                // },
+                {
+                    model: Reviews,
+                    include: [
+                        {
+                            model: Users,
+                            as: 'Reviewer',
+                            attributes: ['name'], // reviewer's name
+                        },
+                    ],
+                    attributes: ['content', 'created_at'], // review's rating, content, and creation date
+                },
+                {
+                    model: Leases,
+                    as: 'leases',
+                    include: [
+                        {
+                            model: Users,
+                            as: 'renter',
+                            attributes: ['name'], // renter's name
+                        },
+                    ],
+                    attributes: ['start_date', 'end_date', 'rent_amount'], // lease's start and end date
+                },
             ],
         });
 
+        if (!propertyData) {
+            res.status(404).send('Property not found');
+            return;
+        }
+
+        // Get property images
+        const propertyImages = await Documents.findAll({
+            where: {
+                property_id: req.params.id,
+                type: 'property_image', // this is to make sure it's the property image and not the property managers profile pic
+            },
+            attributes: ['link'], //
+        });
+
         const property = propertyData.get({ plain: true });
+        const images = propertyImages.map((image) => image.get({ plain: true }));
 
-        // adds a new isAuthor property to the property object, so if the logged-in user is the property address author, they can see the edit and delete buttons
-        property.isAuthor = req.session.user_id === property.user_id;
-
-        // passes the serialized data into the session flag, along with the logged-in user's id and the isAuthor property
+        // passes the serialized data into the template
         res.render('property', {
-            ...property,
+            ...property, // include the property details, manager info, reviews, and renters
+            images,
             logged_in: req.session.logged_in,
             user_id: req.session.user_id,
-            isAuthor: property.isAuthor,
         });
     // } catch (err) {
     //     res.status(500).json(err);

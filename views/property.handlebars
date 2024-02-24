@@ -1,49 +1,55 @@
-{{!-- Individual post page with edit/delete for authors, comments, and add comment for logged in users --}}
+<!-- Property public profile page -->
+<div class="container mt-5">
+    <h1>Property Details</h1>
+    <div class="card mb-3">
+        <div class="card-body">
+            {{#if name.length}}
+            <h2 class="card-title">{{name}}</h2>
+            {{else}}
+            <h2 class="card-title">{{address1}}</h2>
+            {{/if}}
+            <h5>Address: {{address1}} {{address2}}, {{city}}, {{state}} {{zip}}</h5>
+            <p>Managed by: {{user.name}} ({{user.email}}, {{user.phone}})</p>
+        </div>
+    </div>
 
-{{! The post details card --}}
-<div class="card p-4">
-    <h2 class="card-title">{{name}}</h2>
-    <p class="card-text">{{address1}}</p>
-    <p>Posted by {{user.username}} on {{format_date date_created}}</p>
-    {{#if logged_in}}
-    {{!-- only show edit/delete buttons if the logged in user is the post author, see postsRoute.js for the render --}}
-    {{#if isAuthor}}
-    <p>
-        <a href="/edit/{{id}}" class="btn btn-primary btn-edit" data-id="{{id}}">Edit</a>
-        <button class="btn btn-danger btn-delete" data-id="{{id}}">DELETE</button>
-    </p>
+    <div class="property-images">
+    <h3>Property Images</h3>
+    {{#each images}}
+        <div class="property-image">
+            <img src="{{this.link}}" alt="Property Image" class="img-fluid mb-3" />
+        </div>
+    {{/each}}
+    </div>
+
+    {{#if reviews.length}}
+    <h3>Reviews</h3>
+    {{#each reviews}}
+    <div class="card mb-2">
+        <div class="card-body">
+            <h5 class="card-title">Review by {{Reviewer.name}}</h5>
+            <p class="card-text">{{this.content}}</p>
+            <p class="card-text"><small class="text-muted">Posted on {{format_date this.created_at}}</small></p>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <p>No reviews yet.</p>
     {{/if}}
+
+    {{#if leases.length}}
+    <h3>Renters</h3>
+    {{#each leases}}
+    <div class="card mb-2">
+        <div class="card-body">
+            <h5 class="card-title">{{this.renter.name}}</h5>
+            <p>Lease Start Date: {{format_date this.start_date}}</p>
+            <p>Lease End Date: {{format_date this.end_date}}</p>
+            <p>Rent Amount: ${{this.rent_amount}}</p>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <p>No renters have been recorded for this property.</p>
     {{/if}}
 </div>
-
-{{! The comments section --}}
-<div class="row">
-    <div class="col-12 mt-3">
-        <h3>Comments:</h3>
-        {{#each comments as |comment|}}
-        <div class="card p-3 mb-2">
-            <p>{{comment.comment}}</p>
-            <p>Posted by {{comment.user.username}} on {{format_date comment.date_created}}</p>
-        </div>
-        {{/each}}
-    </div>
-
-    {{!-- Add comment form if logged in --}}
-    {{#if logged_in}}
-    <div class="col-12 mt-5">
-        <h3>Add a Comment:</h3>
-        <form class="form new-comment-form" data-id="{{id}}">
-            <div class="form-group my-3">
-                <label for="comment">Comment:</label>
-                <textarea class="form-input w-100 my-3" id="comment" name="comment"></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Add Comment</button>
-            </div>
-        </form>
-    </div>
-    {{/if}}
-
-    {{!-- postEditDelete.js for post event handlers, and comment.js for the comments event handlers --}}
-    <script src="../js/postEditDelete.js"></script>
-    <script src="../js/comment.js"></script>
