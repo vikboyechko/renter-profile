@@ -170,7 +170,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         // Find the logged in user based on the session ID
         const userData = await Users.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
-            include: [{ model: Properties }],
+            // include: [{ model: Properties }],
         });
 
         const user = userData.get({ plain: true });
