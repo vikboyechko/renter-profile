@@ -1,10 +1,11 @@
 const sequelize = require('../config/connection');
-const { Users, Properties, Reviews, Leases } = require('../models');
+const { Users, Properties, Reviews, Leases, Documents } = require('../models');
 
 const userData = require('./usersData.json');
 const propertyData = require('./propertiesData.json');
 const reviewData = require('./reviewsData.json');
 const leaseData = require('./leasesData.json');
+const documentData = require('./documentsData.json');
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
@@ -19,6 +20,7 @@ const seedDatabase = async () => {
     await Properties.bulkCreate(propertyData);
     await Reviews.bulkCreate(reviewData);
     await Leases.bulkCreate(leaseData);
+    await Documents.bulkCreate(documentData);
 
     console.log('Database seeded!');
     process.exit(0);
