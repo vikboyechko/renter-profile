@@ -165,11 +165,11 @@ router.get('/properties/:id', async (req, res) => {
 
 // Use withAuth helper to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
-    try {
+    // try {
         // Find the logged in user based on the session ID
         const userData = await Users.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
-            include: [{ model: Properties }],
+            include: [{ model: Properties, as: 'UserRentals',}],
         });
 
         const user = userData.get({ plain: true });
@@ -178,9 +178,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
             ...user,
             logged_in: true,
         });
-    } catch (err) {
-        res.status(500).json(err);
-    }
+    // } catch (err) {
+    //     res.status(500).json(err);
+    // }
 });
 
 router.get('/login', (req, res) => {
