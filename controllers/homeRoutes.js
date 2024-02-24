@@ -13,7 +13,8 @@ router.get('/', async (req, res) => {
                 },
                 {
                     model: Reviews,
-                    attributes: ['content', 'created_at'],
+                    attributes: ['content', 'rating', 'created_at'],
+                    as: 'reviews',
                 },
                 {
                     model: Documents,

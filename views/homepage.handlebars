@@ -2,9 +2,9 @@
     <!-- Properties Section -->
     <div class="col-12 mb-4">
         <h2>Properties</h2>
-        <div class="d-flex flex-wrap">
+        <div class="d-flex flex-wrap align-items-end">
             {{#each properties}}
-            <div class="card m-2" style="width: 18rem;">
+            <div class="card m-2" style="width: 18rem; min-height:32rem;">
                 <div class="card-body">
                         <!-- Property Images -->
                         {{#if this.PropertyDocuments}}
@@ -16,10 +16,11 @@
                         {{/if}}
                     <h5 class="card-title">{{name}}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{address1}} {{address2}}</h6>
-                    <p class="card-text">{{city}}, {{state}} {{zip}}</p>
-                    <p class="card-text">Managed by: {{user.name}}</p>
-                    <p class="card-text">Contact: {{user.email}} or {{user.phone}}</p>
-                    {{!-- TODO: Add property reviews --}}
+                    <h6 class="card-subtitle mb-4 text-muted">{{city}}, {{state}} {{zip}}</h6>
+                    <p class="card-subtitle mb-2 text-muted">Managed by: {{user.name}}</p>
+                    <p class="card-subtitle mb-2 text-muted">{{user.email}}</p>
+                    <p class="card-subtitle mb-2 text-muted">{{user.phone}}</p>
+                    <img src="{{average_rating reviews}}" alt="Average Rating" class="img-fluid mb-3 rating-img">
                 </div>
             </div>
             {{/each}}
