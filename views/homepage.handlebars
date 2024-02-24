@@ -14,7 +14,9 @@
                             {{/each}}
                         </div>
                         {{/if}}
-                    <h5 class="card-title">{{name}}</h5>
+                    <a href="/properties/{{id}}" class="card-link">
+                        <h5 class="card-title text-primary">{{name}}</h5>
+                    </a>
                     <h6 class="card-subtitle mb-2 text-muted">{{address1}} {{address2}}</h6>
                     <h6 class="card-subtitle mb-4 text-muted">{{city}}, {{state}} {{zip}}</h6>
                     <p class="card-subtitle mb-2 text-muted">Managed by: {{user.name}}</p>

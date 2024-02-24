@@ -69,6 +69,30 @@ const delButtonHandler = async (event) => {
     }
 };
 
+// Function to handle the edit profile form
+const editProfileHandler = async (event) => {
+    event.preventDefault();
+
+    const id = document.querySelector('#profile-edit-form').getAttribute('data-user-id');
+    const name = document.querySelector('#newName').value.trim();
+    const email = document.querySelector('#newEmail').value.trim();
+    const phone = document.querySelector('#newPhone').value.trim();
+
+    if (name && email && phone) {
+        const response = await fetch(`/api/users/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify({ name, email, phone }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            document.location.replace('/dashboard');
+        } else {
+            alert('Failed to update profile');
+        }
+    }
+};
+
 document.querySelector('.new-address-form').addEventListener('submit', newFormHandler);
 
 // Attach event listener to delete button on the post page
@@ -80,3 +104,16 @@ document.querySelectorAll('.btn-delete').forEach((button) => {
 document.querySelectorAll('.btn-edit').forEach((button) => {
     button.addEventListener('click', editButtonHandler);
 });
+
+// Show the form if "Edit Profile" is clicked
+document.getElementById('edit-profile-btn').addEventListener('click', function () {
+    document.getElementById('edit-profile-form').classList.toggle('d-none');
+});
+
+// Hide the form if "Cancel" is clicked
+document.getElementById('cancel-edit-btn').addEventListener('click', function () {
+    document.getElementById('edit-profile-form').classList.add('d-none');
+});
+
+// Attach event listener to edit profile form save
+document.querySelector('#profile-edit-form').addEventListener('submit', editProfileHandler);
