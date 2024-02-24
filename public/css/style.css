@@ -1,20 +1,18 @@
 .bg-light{
-    background-image: url(../dillon-kydd-2keCPb73aQY-unsplash.jpg);
+    background-image:
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url(../images/layout/dillon-kydd-2keCPb73aQY-unsplash.jpg);
     background-size: cover;
     background-position:center;
-    
 }
+
 .nav-renterly{
     background-color: rgb(3, 65, 44);
 }
-.login{
-    background-color:rgb(233, 243, 223);
-    
-}
+
 .email{
     margin-top: -40px;
 }
-
 
 .submit{
     width:400px;
@@ -24,38 +22,44 @@
     margin-top: 20px;
    
 }
+
 .login1{
     font-size: 50px;
     text-align: center;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
    
 }
+
 .sign-up{
     background-color: rgb(233, 243, 223);
 
 }
+
 input::placeholder {
     color: rgb(190, 178, 171);
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-style: italic;
-  }
-  .sign{
-    font-size: 50px;
-    text-align: center;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.sign{
+font-size: 50px;
+text-align: center;
+font-family:Verdana, Geneva, Tahoma, sans-serif;
    
-  }
-  .renter{
-    color: black;
-    font-size: 1.5em;
-    font-style: italic;
-  }
-  .manager{
-    color: black;
-    font-size: 1.5em;
-    font-style: italic;
-  }
-  
+}
+
+.renter{
+color: black;
+font-size: 1.5em;
+font-style: italic;
+}
+
+.manager{
+color: black;
+font-size: 1.5em;
+font-style: italic;
+}
+
 .property-images img {
     min-height: 200px;
     max-height: 200px;

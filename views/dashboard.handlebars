@@ -2,54 +2,54 @@
 --}}
 
 <div class="row">
-    <div class="col-auto">
+    <div class="col-auto mb-4 text-white">
         <h2>Welcome, {{name}}!</h2>
     </div>
 </div>
 
 {{!-- Publish a new post --}}
 <div class="row mt-4">
-    <div class="col-md-6 mb-4 mb-md-0">
+    <div class="col-md-6 mb-4 mb-md-0 text-white">
         <h3>Add a Current or Previous Residence:</h3>
 
         <form class="form new-address-form">
-            <div class="form-group my-1">
+            <div class="form-group my-2">
                 <label for="address-name">Property Name (optional):</label>
                 <input class="form-input w-100 my-1" type="text" id="address-name" name="address-name" placeholder="Example: Otter Tail Apartments" />
             </div>
-            <div class="form-group my-1">
+            <div class="form-group my-2">
                 <label for="address-line1">Street Address:</label>
                 <input class="form-input w-100 my-1" id="address-line1" name="address-line1" placeholder="Example: 123 Main St">
             </div>
-            <div class="form-group my-1">
+            <div class="form-group my-2">
                 <label for="address-line2">Apt/Unit:</label>
                 <input class="form-input w-100 my-1" id="address-line2" name="address-line2" placeholder="Example: Apt. 3J">
             </div>
-            <div class="form-group my-1">
+            <div class="form-group my-2">
                 <label for="address-city">City:</label>
                 <input class="form-input w-100 my-1" id="address-city" name="address-city" placeholder="Example: Waconia">
             </div>
-            <div class="form-group my-1">
+            <div class="form-group my-2">
                 <label for="address-state">State:</label>
                 <input class="form-input w-100 my-1" id="address-state" name="address-state" placeholder="Example: MN">
             </div>
-            <div class="form-group my-1">
+            <div class="form-group my-2">
                 <label for="address-zip">Zip Code:</label>
                 <input class="form-input w-100 my-1" id="address-zip" name="address-zip" placeholder="Example: 55387">
             </div>
 
-            <div class="form-group">
+            <div class="form-group my-4">
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </form>
     </div>
 
     {{!-- Previous posts --}}
-    {{#if properties.length}}
-    <div class="col-md-6 post-list p-3 ">
-        <h3>My Properties:</h3>
+    {{#if UserRentals }}
+    <div class="col-md-6 post-list p-3 text-white ">
+        <h3>My Rental History:</h3>
 
-        {{#each properties as |property|}}
+        {{#each UserRentals as |property|}}
         <div class="row mb-2">
             <div class="col-md-8">
                 <h4><a href="/properties/{{property.id}}">{{property.address1}}</a></h4>
