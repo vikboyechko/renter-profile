@@ -1,15 +1,64 @@
 {{!-- Logged in Renter User Dashboard with option to add new property history, see previous properties, and delete them
 --}}
 
-<div class="row">
+<div class="row ">
     <div class="col-auto mb-4 text-white">
         <h2>Welcome, {{name}}!</h2>
     </div>
 </div>
 
-{{!-- Publish a new post --}}
+<div class="row mb-4 mb-md-0 p-4 text-white border border-white rounded bg-custom">
+    <!-- Profile Picture -->
+    <div class="col-md-3">
+        <div class="card mb-4">
+            <img src="{{#if UserDocuments.profile_pic}}{{UserDocuments.profile_pic}}{{else}}/images/users/default.jpg{{/if}}"
+                class="card-img-top" alt="Profile Picture">
+        </div>
+    </div>
+
+    <!-- My Profile Display and Edit Form -->
+    <div class="col-md-9">
+        <div class="row">
+            <!-- My Profile Display -->
+            <div class="col-md-3">
+                <div class="card-body">
+                    <h2 class="card-text">{{name}}</h2>
+                    <p class="card-text">Email: {{email}}</p>
+                    <p class="card-text">Phone: {{phone}}</p>
+                    <button id="edit-profile-btn" class="btn btn-primary mt-2">Edit Profile</button>
+                    <button id="upload-profile-pic" class="btn btn-primary mt-4">Upload Photo</button>
+                </div>
+            </div>
+
+            <!-- Edit Profile Form (initially hidden) -->
+            <div id="edit-profile-form" class="col-md-6 d-none">
+                <div class="card-body">
+                    <form id="profile-edit-form" data-user-id="{{id}}">
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input type="text" class="form-control" id="newName" name="newName" value="{{name}}">
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" class="form-control" id="newEmail" name="newEmail" value="{{email}}">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone:</label>
+                            <input type="text" class="form-control" id="newPhone" name="newPhone" value="{{phone}}">
+                        </div>
+                        <button type="submit" class="btn btn-success mt-4">Save Changes</button>
+                        <button type="button" id="cancel-edit-btn" class="btn btn-secondary mt-4">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{!-- Add Rental History --}}
 <div class="row mt-4">
-    <div class="col-md-6 mb-4 mb-md-0 text-white">
+    <div class="col-md-6 mb-4 mb-md-0 p-4 text-white border border-white rounded bg-custom">
         <h3>Add a Current or Previous Residence:</h3>
 
         <form class="form new-address-form">
@@ -36,6 +85,14 @@
             <div class="form-group my-2">
                 <label for="address-zip">Zip Code:</label>
                 <input class="form-input w-100 my-1" id="address-zip" name="address-zip" placeholder="Example: 55387">
+            </div>
+            <div class="form-group my-2">
+                <label for="address-move-in">Move-in Date:</label>
+                <input class="form-input w-100 my-1" id="address-move-in" name="address-move-in" type="date">
+            </div>
+            <div class="form-group my-2">
+                <label for="address-move-out">Move-out Date (Leave blank if current address):</label>
+                <input class="form-input w-100 my-1" id="address-move-out" name="address-move-out" type="date">
             </div>
 
             <div class="form-group my-4">

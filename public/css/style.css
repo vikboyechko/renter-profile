@@ -72,3 +72,11 @@ position:absolute;
 bottom: 0px;
 width:90%;
 }
+
+.bg-custom {
+    background-color: rgba(56, 55, 55, 0.8);
+}
+
+.form-input {
+    color: rgb(190, 178, 171);
+}
