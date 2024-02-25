@@ -2,8 +2,10 @@
     <!-- Properties Section -->
     <div class="col-12 mb-4 text-white">
         <h2>Properties</h2>
+        <div id="properties-list">
         <div class="d-flex flex-wrap align-items-end">
             {{#each properties}}
+            <div class=""property">
             <div class="card m-2" style="width: 18rem; min-height:32rem;">
                 <div class="card-body">
                         <!-- Property Images -->
@@ -25,9 +27,12 @@
                     <img src="{{average_rating reviews}}" alt="Average Rating" class="img-fluid mb-3 rating-img">
                 </div>
             </div>
+            </div>
             {{/each}}
         </div>
+        </div>
     </div>
+
     
     <!-- Renters Section -->
     <div class="col-12">
@@ -46,3 +51,5 @@
         </div>
     </div>
 </div>
+
+
