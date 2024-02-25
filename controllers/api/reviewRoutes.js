@@ -62,4 +62,32 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// Update a review
+router.put('/update/:id', async (req, res) => {
+    try {
+        const reviewId = req.params.id;
+        const { content, rating, is_published, reviewee_id, property_id, reviewee_type } = req.body;
+
+        const reviewData = await Reviews.findByPk(reviewId);
+
+        if (!reviewData) {
+            return res.status(404).json({ message: 'No review found with this id!' });
+        }
+
+        reviewData.content = content;
+        reviewData.rating = rating;
+        reviewData.is_published = is_published;
+        reviewData.reviewee_id = reviewee_id;
+        reviewData.property_id = property_id;
+        reviewData.reviewee_type = reviewee_type;
+
+        await reviewData.save();
+
+        res.status(200).json({ message: 'Review updated successfully' });
+    } catch (err) {
+        console.error(err); //
+        res.status(500).json({ message: 'Failed to update review', error: err.message });
+    }
+});
+
 module.exports = router;

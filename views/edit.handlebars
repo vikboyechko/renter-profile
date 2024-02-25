@@ -4,7 +4,12 @@
         <h3>Edit a Current or Previous Residence:</h3>
 
         <form class="form new-address-form">
+            {{!-- hidden element to get the property id --}}
             <input type="hidden" id="property-id" name="property-id" value="{{id}}">
+            <input type="hidden" id="lease-id" name="lease-id" value="{{leases.[0].id}}">
+            <input type="hidden" id="review-id" name="review-id" value="{{reviews.[0].id}}">
+
+            {{!-- Property Name, Street Address, Apt/Unit, City, State, and Zip Code --}}
             <div class="row">
                 <div class="col-md-6 form-group my-2">
                     <label for="address-name">Property Name (optional):</label>

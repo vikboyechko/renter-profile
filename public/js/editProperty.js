@@ -7,50 +7,102 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 });
 
+const formatDateForInput = (dateString) => {
+    const date = new Date(dateString);
+    return isNaN(date.getTime()) ? '' : date.toISOString().slice(0, 10);
+};
+
 const editFormHandler = async (event) => {
     event.preventDefault();
 
+    // Ids stored as hidden input fields
     const propertyId = document.querySelector('#property-id').value.trim();
-    const addressName = document.querySelector('#address-name').value.trim();
-    const addressLine1 = document.querySelector('#address-line1').value.trim();
-    const addressLine2 = document.querySelector('#address-line2').value.trim();
-    const addressCity = document.querySelector('#address-city').value.trim();
-    const addressState = document.querySelector('#address-state').value.trim();
-    const addressZip = document.querySelector('#address-zip').value.trim();
-    const addressMoveIn = document.querySelector('#address-move-in').value.trim();
-    const addressMoveOut = document.querySelector('#address-move-out').value.trim();
-    const addressRent = document.querySelector('#address-rent-amount').value.trim();
-    const addressBedrooms = document.querySelector('#address-bedrooms').value.trim();
-    const addressSquareFootage = document.querySelector('#address-square-footage').value.trim();
-    const addressRating = document.querySelector('#address-rating').value.trim();
-    const addressReview = document.querySelector('#address-review').value.trim();
+    const leaseId = document.querySelector('#lease-id').value.trim();
+    const reviewId = document.querySelector('#review-id').value.trim();
+
+    const formData = {
+        addressName: document.querySelector('#address-name').value.trim(),
+        addressLine1: document.querySelector('#address-line1').value.trim(),
+        addressLine2: document.querySelector('#address-line2').value.trim(),
+        addressCity: document.querySelector('#address-city').value.trim(),
+        addressState: document.querySelector('#address-state').value.trim(),
+        addressZip: document.querySelector('#address-zip').value.trim(),
+        addressRent: document.querySelector('#address-rent-amount').value.trim(),
+        addressBedrooms: document.querySelector('#address-bedrooms').value.trim(),
+        addressSquareFootage: document.querySelector('#address-square-footage').value.trim(),
+        addressRating: document.querySelector('#address-rating').value.trim(),
+        addressReview: document.querySelector('#address-review').value.trim(),
+    };
+
+    const addressMoveIn = formatDateForInput(document.querySelector('#address-move-in').value);
+    const addressMoveOut = formatDateForInput(document.querySelector('#address-move-out').value);
 
     console.log('propertyId:', propertyId);
+    console.log('leaseId:', leaseId);
+    console.log('reviewId:', reviewId);
+
     // Update Property
-    try {
-        const response = await fetch(`/api/properties/update/${propertyId}`, {
+    let response = await fetch(`/api/properties/update/${propertyId}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            name: formData.addressName,
+            address1: formData.addressLine1,
+            address2: formData.addressLine2,
+            city: formData.addressCity,
+            state: formData.addressState,
+            zip: formData.addressZip,
+        }),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (!response.ok) {
+        console.error('Failed to update property');
+        return;
+    }
+
+    // Update Lease if leaseId is provided
+
+    const formattedMoveIn = addressMoveIn === '' ? null : addressMoveIn;
+    const formattedMoveOut = addressMoveOut === '' ? null : addressMoveOut;
+    if (leaseId) {
+        response = await fetch(`/api/leases/update/${leaseId}`, {
             method: 'PUT',
             body: JSON.stringify({
-                name: addressName,
-                address1: addressLine1,
-                address2: addressLine2,
-                city: addressCity,
-                state: addressState,
-                zip: addressZip,
+                start_date: formattedMoveIn,
+                end_date: formattedMoveOut,
+                rent_amount: formData.addressRent,
+                rent_bedrooms: formData.addressBedrooms,
+                square_footage: formData.addressSquareFootage,
             }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
         });
 
-        if (response.ok) {
-            // Redirect to the updated post page
-            document.location.replace(`/dashboard`);
-        } else {
-            console.log('Failed to update address');
+        if (!response.ok) {
+            console.error('Failed to update lease');
+            return;
         }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Failed to update post');
     }
+
+    // Update Review if reviewId is provided
+    if (reviewId) {
+        response = await fetch(`/api/reviews/update/${reviewId}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                rating: formData.addressRating,
+                content: formData.addressReview,
+                property_id: propertyId,
+                reviewee_type: 'property',
+            }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (!response.ok) {
+            console.error('Failed to update review');
+            return;
+        }
+    }
+
+    document.location.replace('/dashboard');
 };
