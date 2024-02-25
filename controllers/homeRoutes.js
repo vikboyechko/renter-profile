@@ -124,6 +124,7 @@ router.get('/properties/:id', async (req, res) => {
                 },
                 {
                     model: Reviews,
+                    as: 'reviews',
                     include: [
                         {
                             model: Users,
