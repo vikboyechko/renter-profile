@@ -11,8 +11,9 @@
     <!-- Profile Picture -->
     <div class="col-md-3">
         <div class="card mb-4">
-            <img src="{{#if UserDocuments.profile_pic}}{{UserDocuments.profile_pic}}{{else}}/images/users/default.jpg{{/if}}"
-                class="card-img-top" alt="Profile Picture">
+            {{!-- <img src="{{#if UserDocuments.profile_pic}}{{UserDocuments.link}}{{else}}/images/users/default.jpg{{/if}}"
+                class="card-img-top" alt="Profile Picture"> --}}
+        <img src="{{profilePicLink}}" class="card-img-top" alt="Profile Picture">
         </div>
     </div>
 
@@ -66,37 +67,66 @@
         <h3>Add a Current or Previous Residence:</h3>
 
         <form class="form new-address-form">
-            <div class="form-group my-2">
+            <div class="row">
+            <div class="col-md-6 form-group my-2">
                 <label for="address-name">Property Name (optional):</label>
                 <input class="form-input w-100 my-1" type="text" id="address-name" name="address-name" placeholder="Example: Otter Tail Apartments" />
             </div>
-            <div class="form-group my-2">
+            <div class="col-md-6 form-group my-2">
                 <label for="address-line1">Street Address:</label>
                 <input class="form-input w-100 my-1" id="address-line1" name="address-line1" placeholder="Example: 123 Main St">
             </div>
-            <div class="form-group my-2">
+            <div class="col-md-6 form-group my-2">
                 <label for="address-line2">Apt/Unit:</label>
                 <input class="form-input w-100 my-1" id="address-line2" name="address-line2" placeholder="Example: Apt. 3J">
             </div>
-            <div class="form-group my-2">
+            <div class="col-md-6 form-group my-2">
                 <label for="address-city">City:</label>
                 <input class="form-input w-100 my-1" id="address-city" name="address-city" placeholder="Example: Waconia">
             </div>
-            <div class="form-group my-2">
+            <div class="col-md-6 form-group my-2">
                 <label for="address-state">State:</label>
                 <input class="form-input w-100 my-1" id="address-state" name="address-state" placeholder="Example: MN">
             </div>
-            <div class="form-group my-2">
+            <div class="col-md-6 form-group my-2">
                 <label for="address-zip">Zip Code:</label>
                 <input class="form-input w-100 my-1" id="address-zip" name="address-zip" placeholder="Example: 55387">
             </div>
-            <div class="form-group my-2">
-                <label for="address-move-in">Move-in Date:</label>
-                <input class="form-input w-100 my-1" id="address-move-in" name="address-move-in" type="date">
             </div>
-            <div class="form-group my-2">
-                <label for="address-move-out">Move-out Date (Leave blank if current address):</label>
-                <input class="form-input w-100 my-1" id="address-move-out" name="address-move-out" type="date">
+            
+            {{!-- Move-in and Move-out Dates, Bedrooms, Square Footage, Rent Amount, and Rating --}}
+            <div class="row">
+                <h4 class="mt-4">Additional Details:</h4>
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-move-in">Move-in Date:</label>
+                    <input class="form-input w-100 my-1" id="address-move-in" name="address-move-in" type="date">
+                </div>
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-move-out">Move-out Date:</label>
+                    <input class="form-input w-100 my-1" id="address-move-out" name="address-move-out" type="date">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-bedrooms">Bedrooms:</label>
+                    <input class="form-input w-100 my-1" id="address-bedrooms" name="address-bedrooms" placeholder="Example: 3br">
+                </div>
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-square-footage">Square Footage:</label>
+                    <input class="form-input w-100 my-1" id="address-square-footage" name="address-square-footage" placeholder="1200">
+                </div>
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-rent-amount">Monthly Rent:</label>
+                    <input class="form-input w-100 my-1" id="address-rent-amount" name="address-rent-amount" placeholder="1575">
+                </div>
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-rating">My Rating (1-10)</label>
+                    <input class="form-input w-100 my-1" id="address-rating" name="address-rating" placeholder="7">
+                </div>
+                <div class="col-md-12 form-group my-2">
+                    <label for="address-review">Add Review (optional):</label>
+                    <textarea class="form-input w-100 my-1" id="address-review" name="address-review" placeholder="Example: Loved the location, but the landlord was difficult to work with."> </textarea>
+                </div>
             </div>
 
             <div class="form-group my-4">
@@ -105,15 +135,39 @@
         </form>
     </div>
 
-    {{!-- Previous posts --}}
+    {{!-- My Rental History --}}
     {{#if UserRentals }}
-    <div class="col-md-6 post-list p-3 text-white ">
-        <h3>My Rental History:</h3>
+    <div class="col-md-6 mb-5 mb-md-0 p-4 text-white border border-white rounded bg-custom">
+        <h3 class="mb-4">My Rental History:</h3>
 
         {{#each UserRentals as |property|}}
         <div class="row mb-2">
-            <div class="col-md-8">
-                <h4><a href="/properties/{{property.id}}">{{property.address1}}</a></h4>
+            <div class="card col-md-8 ">
+                <div class="card-body w-100 text-black">
+                    <h6>{{property.name}}</h6>
+                    <h6>{{property.address1}}</h6>
+                    <h6>{{property.address2}}</h6>
+                    <h6>{{property.city}}, {{property.state}} {{property.zip}}</h6>
+                    <div class="mt-4">
+                        {{#if property.leaseStartDate}}
+                            <p class="my-1"><strong>Move-in: </strong>{{format_date property.leaseStartDate}}</p>
+                            {{#if property.leaseEndDate}}
+                                <p class="my-1"><strong>Move-out: </strong>{{format_date property.leaseEndDate}}</p>
+                            {{else}}
+                                <p class="my-1"><em>Current Residence</em></p>
+                            {{/if}}
+                            <p class="my-1"><strong>{{property.bedrooms}} </strong> | <strong> {{property.squareFootage}} sq ft </strong> | <strong> ${{property.rentAmount}}/mo</strong></p>
+                        {{/if}}
+                    </div>
+                </div>
+                {{!-- My Review --}}
+                {{#if property.reviewRating}}
+                    <div class="card-footer">
+                        <p class="my-1"><strong>My Rating: </strong>{{property.rating}}</p>
+                        <p class="my-1"><strong>My Review: </strong>{{property.content}}</p>
+                    </div>
+                {{/if}}
+                {{!-- <h4><a href="/properties/{{property.id}}">{{property.address1}}</a></h4> --}}
             </div>
             <div class="col-md-4">
                 <a href="/edit/{{id}}" class="btn btn-sm btn-primary btn-edit" data-id="{{id}}">Edit</a>
