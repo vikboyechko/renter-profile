@@ -19,7 +19,7 @@ const newFormHandler = async (event) => {
     const addressReview = document.querySelector('#address-review').value.trim();
 
     if (addressLine1 && addressCity && addressState && addressZip) {
-        const response = await fetch(`/api/properties`, {
+        let response = await fetch(`/api/properties`, {
             method: 'POST',
             body: JSON.stringify({
                 name: addressName,
@@ -46,18 +46,20 @@ const newFormHandler = async (event) => {
         response = await fetch(`/api/leases`, {
             method: 'POST',
             body: JSON.stringify({
-                propertyId,
-                startDate: addressMoveIn,
-                endDate: addressMoveOut,
-                rentAmount: addressRent,
-                bedrooms: addressBedrooms,
-                squareFootage: addressSquareFootage,
+                property_id: propertyId,
+                start_date: addressMoveIn,
+                end_date: addressMoveOut,
+                rent_amount: addressRent,
+                rent_bedrooms: addressBedrooms,
+                square_footage: addressSquareFootage,
             }),
             headers: { 'Content-Type': 'application/json' },
         });
 
         if (!response.ok) {
+            const errorData = await response.json();
             console.log('Failed to add lease');
+            alert(`Failed to add lease: ${errorData.message}`);
             return;
         }
 

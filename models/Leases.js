@@ -11,11 +11,11 @@ Leases.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        startDate: {
+        start_date: {
             type: DataTypes.DATE,
             allowNull: false,
         },
-        endDate: {
+        end_date: {
             type: DataTypes.DATE,
             allowNull: true, // This allows for currently active leases
         },

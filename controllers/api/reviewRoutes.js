@@ -3,10 +3,18 @@ const { Reviews, Users, Properties, Leases } = require('../../models');
 
 router.post('/', async (req, res) => {
     try {
+        // destructuring the content, rating, reviewee_id, and reviewee_type properties off of req.body
+        const { content, rating, reviewee_id, reviewee_type } = req.body;
+
+        // create a new review with the user_id and property_id
         const newReview = await Reviews.create({
-            ...req.body,
-            user_id: req.session.user_id,
+            content,
+            rating,
+            reviewee_id,
+            reviewee_type,
+            reviewer_id: req.session.user_id,
         });
+
         res.status(200).json(newReview);
     } catch (err) {
         res.status(400).json(err);
