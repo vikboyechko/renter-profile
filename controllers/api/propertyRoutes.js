@@ -43,6 +43,36 @@ router.put('/update/:id', async (req, res) => {
         const propertyId = req.params.id;
         const { name, address1, address2, city, state, zip } = req.body;
 
+        router.put('/update/:id', async (req, res) => {
+            try {
+                const propertyId = req.params.id;
+                const { name, address1, address2, city, state, zip } = req.body;
+                console.log('-----------------');
+                console.log('Received propertyId:', propertyId);
+                console.log('Received body data:', req.body);
+
+                const propertyData = await Properties.findByPk(propertyId);
+
+                if (!propertyData) {
+                    res.status(404).json({ message: 'No property found with this id!' });
+                    return;
+                }
+
+                propertyData.name = name;
+                propertyData.address1 = address1;
+                propertyData.address2 = address2;
+                propertyData.city = city;
+                propertyData.state = state;
+                propertyData.zip = zip;
+
+                await propertyData.save();
+
+                res.status(200).json({ message: 'Property updated successfully' });
+            } catch (err) {
+                res.status(500).json(err);
+            }
+        });
+
         const propertyData = await Properties.findByPk(propertyId);
 
         if (!propertyData) {

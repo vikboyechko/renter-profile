@@ -53,6 +53,7 @@ Reviews.belongsTo(Users, {
 Properties.hasMany(Reviews, {
     foreignKey: 'property_id',
     constraints: false,
+    as: 'reviews',
 });
 
 Reviews.belongsTo(Properties, {

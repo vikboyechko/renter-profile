@@ -179,6 +179,19 @@ router.get('/dashboard', withAuth, async (req, res) => {
                             model: Reviews,
                             as: 'reviews',
                         },
+                        {
+                            model: Leases,
+                            as: 'leases',
+                        },
+                        {
+                            model: Documents,
+                            as: 'PropertyDocuments',
+                            attributes: ['link'],
+                            where: {
+                                type: 'property_image',
+                            },
+                            required: false, //
+                        },
                     ],
                 },
                 { model: Reviews, as: 'WrittenReviews' },
@@ -244,6 +257,8 @@ router.get('/edit/:id', withAuth, async (req, res) => {
                     model: Users,
                     attributes: ['name'],
                 },
+                { model: Leases, as: 'leases' },
+                { model: Reviews, as: 'reviews' },
             ],
         });
         const property = propertyData.get({ plain: true });

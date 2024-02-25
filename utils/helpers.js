@@ -25,4 +25,22 @@ module.exports = {
         }
         return '/images/ratings/default.jpg';
     },
+
+    format_date_to_input: (date) => {
+        if (!date) return ''; // Handle null or undefined dates
+
+        const d = new Date(date);
+        let month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [year, month, day].join('-');
+    },
+
+    json: function (context) {
+        return JSON.stringify(context);
+    },
 };
