@@ -142,28 +142,28 @@
 
         {{#each UserRentals as |property|}}
         <div class="row mb-2">
-            <div class="card col-md-8 ">
-                <div class="card-body w-100 text-black">
+            <div class="card col-md-12 mb-4 rental-bg-custom border border-light rounded">
+                <div class="card-body w-100 text-white">
                     <h6>{{property.name}}</h6>
                     <h6>{{property.address1}}</h6>
                     <h6>{{property.address2}}</h6>
                     <h6>{{property.city}}, {{property.state}} {{property.zip}}</h6>
                     <div class="mt-4">
-                        {{#if property.leaseStartDate}}
-                            <p class="my-1"><strong>Move-in: </strong>{{format_date property.leaseStartDate}}</p>
-                            {{#if property.leaseEndDate}}
-                                <p class="my-1"><strong>Move-out: </strong>{{format_date property.leaseEndDate}}</p>
+                        {{#if property.leases.[0].start_date}}
+                            <p class="my-1"><strong>Move-in: </strong>{{format_date property.leases.[0].start_date}}</p>
+                            {{#if property.leases.[0].end_date}}
+                                <p class="my-1"><strong>Move-out: </strong>{{format_date property.leases.[0].end_date}}</p>
                             {{else}}
                                 <p class="my-1"><em>Current Residence</em></p>
                             {{/if}}
-                            <p class="my-1"><strong>{{property.bedrooms}} </strong> | <strong> {{property.squareFootage}} sq ft </strong> | <strong> ${{property.rentAmount}}/mo</strong></p>
+                            <p class="my-1"><strong>{{property.leases.[0].rent_bedrooms}} </strong> | <strong> {{property.leases.[0].square_footage}} sq ft </strong> | <strong> ${{property.leases.[0].rent_amount}}/mo</strong></p>
                         {{/if}}
                     </div>
 
                     <!-- Property Reviews -->
                     {{#if property.reviews}}
                     {{#each property.reviews as |review|}}
-                    <div class="review">
+                    <div class="review mt-4">
                         <p class="my-1"><strong>My Rating: </strong>{{review.rating}} / 10</p>
                         <p class="my-1"><strong>My Review: </strong>{{review.content}}</p>
                     </div>
@@ -171,17 +171,25 @@
                     {{/if}}
                 </div>
 
+                <div class="col-md-6">
+                    <a href="/edit/{{id}}" class="btn btn-sm btn-primary btn-edit mx-2 my-3" data-id="{{id}}">Edit</a>
+                    <button class="btn btn-sm btn-danger btn-delete" data-id="{{property.id}}">DELETE</button>
+                </div>
+
                 {{!-- <h4><a href="/properties/{{property.id}}">{{property.address1}}</a></h4> --}}
             </div>
-            <div class="col-md-4">
-                <a href="/edit/{{id}}" class="btn btn-sm btn-primary btn-edit" data-id="{{id}}">Edit</a>
-                <button class="btn btn-sm btn-danger btn-delete" data-id="{{property.id}}">DELETE</button>
-            </div>
+            
         </div>
         {{/each}}
     </div>
     {{/if}}
 </div>
+
+{{!-- helpful json load in console to see the data and property names --}}
+<script>
+    var data = {{{ json this}}};
+    console.log(data);
+</script>
 
 {{!-- event handlers in renterDashboard.js --}}
 <script src="./js/renterDashboard.js"></script>

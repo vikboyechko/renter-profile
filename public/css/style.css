@@ -77,6 +77,10 @@ width:90%;
     background-color: rgba(56, 55, 55, 0.8);
 }
 
+.rental-bg-custom {
+    background-color: rgba(56, 55, 55, 0.8);
+}
+
 .form-input {
     color: rgb(43, 42, 42);
 }
