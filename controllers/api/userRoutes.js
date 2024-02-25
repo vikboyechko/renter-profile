@@ -60,4 +60,32 @@ router.post('/logout', (req, res) => {
     }
 });
 
+// If a PUT request is made to /api/users/:id, that user is updated.
+router.put('/:id', async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const { name, email, phone } = req.body;
+
+        const userData = await Users.findByPk(userId);
+
+        console.log(JSON.stringify({ userData }));
+
+        if (!userData) {
+            res.status(404).json({ message: 'No user found with this id!' });
+            return;
+        }
+
+        userData.name = name;
+        userData.email = email;
+        userData.phone = phone;
+
+        console.log('userData:', userData);
+        await userData.save();
+
+        res.status(200).json({ message: 'User updated successfully' });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;

@@ -15,4 +15,14 @@ module.exports = {
             return options.inverse(this);
         }
     },
+
+    average_rating: (ratings) => {
+        if (ratings && ratings.length) {
+            const sum = ratings.reduce((acc, { rating }) => acc + rating, 0);
+            const average = sum / ratings.length;
+            const roundedAverage = Math.round(average);
+            return `/images/ratings/${roundedAverage}.jpg`;
+        }
+        return '/images/ratings/default.jpg';
+    },
 };

@@ -1,0 +1,302 @@
+[
+    {
+        "type": "property_image",
+        "link": "/images/properties/1.jpg",
+        "property_id": 1,
+        "user_id": 11
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/2.jpg",
+        "property_id": 2,
+        "user_id": 9
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/3.jpg",
+        "property_id": 3,
+        "user_id": 18
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/4.jpg",
+        "property_id": 4,
+        "user_id": 13
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/5.jpg",
+        "property_id": 5,
+        "user_id": 5
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/6.jpg",
+        "property_id": 6,
+        "user_id": 17
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/7.jpg",
+        "property_id": 7,
+        "user_id": 10
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/8.jpg",
+        "property_id": 8,
+        "user_id": 5
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/9.jpg",
+        "property_id": 9,
+        "user_id": 19
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/10.jpg",
+        "property_id": 10,
+        "user_id": 19
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/11.jpg",
+        "property_id": 11,
+        "user_id": 22
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/12.jpg",
+        "property_id": 12,
+        "user_id": 1
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/13.jpg",
+        "property_id": 13,
+        "user_id": 8
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/14.jpg",
+        "property_id": 14,
+        "user_id": 19
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/15.jpg",
+        "property_id": 15,
+        "user_id": 5
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/16.jpg",
+        "property_id": 16,
+        "user_id": 10
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/17.jpg",
+        "property_id": 17,
+        "user_id": 11
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/18.jpg",
+        "property_id": 18,
+        "user_id": 17
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/19.jpg",
+        "property_id": 19,
+        "user_id": 8
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/20.jpg",
+        "property_id": 20,
+        "user_id": 5
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/21.jpg",
+        "property_id": 21,
+        "user_id": 8
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/22.jpg",
+        "property_id": 22,
+        "user_id": 8
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/23.jpg",
+        "property_id": 23,
+        "user_id": 11
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/24.jpg",
+        "property_id": 24,
+        "user_id": 6
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/25.jpg",
+        "property_id": 25,
+        "user_id": 21
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/26.jpg",
+        "property_id": 26,
+        "user_id": 19
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/27.jpg",
+        "property_id": 27,
+        "user_id": 13
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/28.jpg",
+        "property_id": 28,
+        "user_id": 4
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/29.jpg",
+        "property_id": 29,
+        "user_id": 8
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/30.jpg",
+        "property_id": 30,
+        "user_id": 20
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/31.jpg",
+        "property_id": 31,
+        "user_id": 22
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/32.jpg",
+        "property_id": 32,
+        "user_id": 13
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/33.jpg",
+        "property_id": 33,
+        "user_id": 17
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/34.jpg",
+        "property_id": 34,
+        "user_id": 4
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/35.jpg",
+        "property_id": 35,
+        "user_id": 21
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/36.jpg",
+        "property_id": 36,
+        "user_id": 8
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/37.jpg",
+        "property_id": 37,
+        "user_id": 1
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/38.jpg",
+        "property_id": 38,
+        "user_id": 1
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/39.jpg",
+        "property_id": 39,
+        "user_id": 1
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/40.jpg",
+        "property_id": 40,
+        "user_id": 19
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/41.jpg",
+        "property_id": 41,
+        "user_id": 4
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/42.jpg",
+        "property_id": 42,
+        "user_id": 6
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/43.jpg",
+        "property_id": 43,
+        "user_id": 10
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/44.jpg",
+        "property_id": 44,
+        "user_id": 19
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/45.jpg",
+        "property_id": 45,
+        "user_id": 11
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/46.jpg",
+        "property_id": 46,
+        "user_id": 20
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/47.jpg",
+        "property_id": 47,
+        "user_id": 11
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/48.jpg",
+        "property_id": 48,
+        "user_id": 6
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/49.jpg",
+        "property_id": 49,
+        "user_id": 10
+    },
+    {
+        "type": "property_image",
+        "link": "/images/properties/50.jpg",
+        "property_id": 50,
+        "user_id": 17
+    }
+]

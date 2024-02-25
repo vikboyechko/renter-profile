@@ -13,7 +13,8 @@ router.get('/', async (req, res) => {
                 },
                 {
                     model: Reviews,
-                    attributes: ['content', 'created_at'],
+                    attributes: ['content', 'rating', 'created_at'],
+                    as: 'reviews',
                 },
                 {
                     model: Documents,
@@ -170,8 +171,16 @@ router.get('/dashboard', withAuth, async (req, res) => {
         // Find the logged in user based on the session ID
         const userData = await Users.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
-            include: [{ model: Properties, as: 'UserRentals',}],
+            include: [
+                { model: Properties, as: 'UserRentals' },
+                { model: Reviews, as: 'WrittenReviews' },
+                { model: Reviews, as: 'ReceivedReviews' },
+                { model: Leases, as: 'rentals' },
+                { model: Documents, as: 'UserDocuments' },
+            ],
         });
+        console.log(userData.get({ plain: true }));
+        // console.log(user);
 
         const user = userData.get({ plain: true });
 
