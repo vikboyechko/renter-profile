@@ -28,7 +28,8 @@ router.get('/', async (req, res) => {
         });
         // Serialize data so the template can read it
         const properties = propertyData.map((property) => property.get({ plain: true }));
-
+        console.log (properties.reviews)
+       console.log (properties);
         // Get renters (users with the role of "renter")
         const renterData = await Users.findAll({
             where: { role: 'renter' },
