@@ -1,32 +1,51 @@
 <!-- Renter public profile page -->
-<div class="container mt-5">
-    <h1>Renter Details</h1>
-    <div class="card mb-3">
+<div class="container my-5">
+    <h1 class="my-4 text-white">Renter Details</h1>
+    <div class="row mb-4 mb-md-0 p-4 text-white border border-white rounded bg-custom">
+
+        {{!-- Profile Info --}}
         <div class="card-body">
          <h2 class="card-title">{{name}}</h2>
-            <h5 class="card-subtitle mb-2 text-muted">Email: {{email}}</h5>
+            <h5 class="card-subtitle mb-2 text-white">Email: {{email}}</h5>
+            <h5 class="card-subtitle mb-2 text-white">Phone: {{phone}}</h5>
         </div>
     </div>
 
     {{#if UserRentals.length}}
-    <h3>Rental History</h3>
+    <h2 class="mt-5 text-white">Rental History</h2>
     {{#each UserRentals as |property|}}
-    <div class="card mb-2">
+    <div class="row mb-4 mb-md-3 p-4 text-white border border-white rounded bg-custom">
+        <div class="col-md-6">
         <div class="card-body">
-            <h5 class="card-title">{{property.name}}</h5>
-            <h5 class="card-title">{{property.address1}}</h5>
-            <p class="card-text">{{property.address2}}</p>
-            <p class="card-text">{{property.city}}, {{property.state}} {{property.zip}}</p>
-            {{#if property.leases.length}}
-            {{#each property.leases}}
-            <p>Lease Start Date: {{format_date this.start_date}}</p>
-            <p>Lease End Date: {{format_date this.end_date}}</p>
-            <p>Rent Amount: ${{this.rent_amount}}</p>
+            <h4>{{property.name}}</h4>
+            <h4>{{property.address1}}</h4>
+            <h4>{{property.address2}}</h4>
+            <h4>{{property.city}}, {{property.state}} {{property.zip}}</h4>
+            <div class="mt-4">
+                {{#if property.leases.[0].start_date}}
+                <p class="my-1"><strong>Move-in: </strong>{{format_date property.leases.[0].start_date}}</p>
+                {{#if property.leases.[0].end_date}}
+                <p class="my-1"><strong>Move-out: </strong>{{format_date property.leases.[0].end_date}}</p>
+                {{else}}
+                <p class="my-1"><em>Current Residence</em></p>
+                {{/if}}
+                <p class="my-1"><strong>{{property.leases.[0].rent_bedrooms}} </strong> | <strong>
+                        {{property.leases.[0].square_footage}} sq ft </strong> | <strong>
+                        ${{property.leases.[0].rent_amount}}/mo</strong></p>
+                {{/if}}
+            </div>
+            
+            <!-- Property Reviews -->
+            {{#if property.reviews}}
+            {{#each property.reviews as |review|}}
+            <div class="review mt-4">
+                <p class="my-1"><strong>My Rating: </strong>{{review.rating}} / 10</p>
+                <p class="my-1"><strong>My Review: </strong>{{review.content}}</p>
+            </div>
             {{/each}}
-            {{else}}
-            <p>No additional information for this rental.</p>
             {{/if}}
-            <a href="/properties/{{property.id}}" class="btn btn-primary">View Property</a>
+            </div>
+
         </div>
     </div>
     {{/each}}
@@ -35,9 +54,9 @@
     {{/if}}
 
     {{#if ReceivedReviews.length}}
-    <h3>Reviews</h3>
+    <h2 class="mt-5 text-white">Reviews</h2>
     {{#each ReceivedReviews}}
-    <div class="card mb-2">
+    <div class="row mb-4 mb-md-0 p-4 text-white border border-white rounded bg-custom">
         <div class="card-body">
             <h5 class="card-title">Review by {{Reviewer.name}}</h5>
             <p class="card-text">{{this.content}}</p>
@@ -49,5 +68,10 @@
     {{else}}
     <p>No reviews yet.</p>
     {{/if}}
-
 </div>
+<div class="my-5"></div>
+
+<script>
+    var data = {{{ json this}}};
+    console.log(data);
+</script>
