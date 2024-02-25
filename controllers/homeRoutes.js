@@ -61,8 +61,21 @@ router.get('/renters/:id', async (req, res) => {
                     include: [
                         {
                             model: Leases,
-                            attributes: ['start_date', 'end_date', 'rent_amount'],
+                            attributes: ['start_date', 'end_date', 'rent_amount', 'square_footage', 'rent_bedrooms'],
                             as: 'leases',
+                        },
+                        {
+                            model: Reviews,
+                            as: 'reviews',
+                        },
+                        {
+                            model: Documents,
+                            as: 'PropertyDocuments',
+                            attributes: ['link'],
+                            where: {
+                                type: 'property_image',
+                            },
+                            required: false, //
                         },
                     ],
                 },
