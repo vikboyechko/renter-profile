@@ -2,6 +2,17 @@ const router = require('express').Router();
 // Import the User model from the models folder
 const { Users } = require('../../models');
 
+// Email module
+const nodemailer = require('nodemailer');
+const transporter = nodemailer.createTransport({
+    host: 'smtp-mail.outlook.com',
+    port: 587,
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.EMAIL_PASSWORD,
+    },
+});
+
 // If a POST request is made to /api/users, a new user is created. The user id and logged in state is saved to the session within the request object.
 router.post('/', async (req, res) => {
     console.log('req.body:', req.body);
@@ -11,6 +22,22 @@ router.post('/', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
+
+            // when a person signs up, they get a welcome email
+            const mailinfo = {
+                from: process.env.EMAIL,
+                to: req.body.email,
+                subject: 'Welcome to Renterly!',
+                text: `Hello ${req.body.name}, welcome to the team!`,
+            };
+
+            transporter.sendMail(mailinfo, function (err, info) {
+                if (err) {
+                    console.log('Error:', err);
+                } else {
+                    console.log('Info:', info);
+                }
+            });
 
             res.status(200).json(userData);
         });
