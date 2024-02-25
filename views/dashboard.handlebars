@@ -159,14 +159,18 @@
                             <p class="my-1"><strong>{{property.bedrooms}} </strong> | <strong> {{property.squareFootage}} sq ft </strong> | <strong> ${{property.rentAmount}}/mo</strong></p>
                         {{/if}}
                     </div>
-                </div>
-                {{!-- My Review --}}
-                {{#if property.reviewRating}}
-                    <div class="card-footer">
-                        <p class="my-1"><strong>My Rating: </strong>{{property.rating}}</p>
-                        <p class="my-1"><strong>My Review: </strong>{{property.content}}</p>
+
+                    <!-- Property Reviews -->
+                    {{#if property.reviews}}
+                    {{#each property.reviews as |review|}}
+                    <div class="review">
+                        <p class="my-1"><strong>My Rating: </strong>{{review.rating}} / 10</p>
+                        <p class="my-1"><strong>My Review: </strong>{{review.content}}</p>
                     </div>
-                {{/if}}
+                    {{/each}}
+                    {{/if}}
+                </div>
+
                 {{!-- <h4><a href="/properties/{{property.id}}">{{property.address1}}</a></h4> --}}
             </div>
             <div class="col-md-4">

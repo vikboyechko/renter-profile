@@ -67,9 +67,10 @@ const newFormHandler = async (event) => {
         response = await fetch(`/api/reviews`, {
             method: 'POST',
             body: JSON.stringify({
-                propertyId,
                 rating: addressRating,
-                review: addressReview,
+                content: addressReview,
+                property_id: propertyId,
+                reviewee_type: 'property',
             }),
             headers: { 'Content-Type': 'application/json' },
         });

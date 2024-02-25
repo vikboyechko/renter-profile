@@ -42,24 +42,22 @@ Reviews.belongsTo(Users, {
     as: 'Reviewee',
     foreignKey: 'reviewee_id',
     constraints: false,
+    scope: {
+        reviewee_type: 'user',
+    },
 });
 
 // Property and Review associations for reviews written about a property
-Reviews.belongsTo(Properties, {
-    foreignKey: 'reviewee_id',
-    constraints: false,
-    scope: {
-        reviewee_type: 'property',
-    },
-});
 
 // This is how we will access all reviews for a property
 Properties.hasMany(Reviews, {
-    foreignKey: 'reviewee_id',
+    foreignKey: 'property_id',
     constraints: false,
-    scope: {
-        reviewee_type: 'property',
-    },
+});
+
+Reviews.belongsTo(Properties, {
+    foreignKey: 'property_id',
+    constraints: false,
 });
 
 // Lease-Property association: A property can have many leases

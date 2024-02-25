@@ -13,7 +13,7 @@ Leases.init(
         },
         start_date: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
         },
         end_date: {
             type: DataTypes.DATE,
@@ -26,9 +26,6 @@ Leases.init(
         rent_bedrooms: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-                isIn: [['studio', '1br', '2br', '3br']],
-            },
         },
         square_footage: {
             type: DataTypes.INTEGER,

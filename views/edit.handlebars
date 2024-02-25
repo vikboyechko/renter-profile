@@ -1,59 +1,86 @@
-{{!-- Login or Signup page --}}
+{{!-- The property edit view, with option to all the content--}}
 
-{{!-- Login --}}
-<div class="row">
-    <div class="col-12 col-md-5 card p-4 mx-2 mb-4 mb-md-0">
-        <h2 class="card-title">Login</h2>
+<div class="row mt-4">
+    <div class="col-md-6 mb-4 mb-md-0 p-4 text-white border border-white rounded bg-custom">
+        <h3>Add a Current or Previous Residence:</h3>
 
-        <form class="form login-form card-text">
+        <form class="form new-address-form">
+            <div class="row">
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-name">Property Name (optional):</label>
+                    <input class="form-input w-100 my-1" type="text" id="address-name" name="address-name"
+                        placeholder="Example: Otter Tail Apartments" />
+                </div>
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-line1">Street Address:</label>
+                    <input class="form-input w-100 my-1" id="address-line1" name="address-line1"
+                        placeholder="Example: 123 Main St">
+                </div>
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-line2">Apt/Unit:</label>
+                    <input class="form-input w-100 my-1" id="address-line2" name="address-line2"
+                        placeholder="Example: Apt. 3J">
+                </div>
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-city">City:</label>
+                    <input class="form-input w-100 my-1" id="address-city" name="address-city"
+                        placeholder="Example: Waconia">
+                </div>
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-state">State:</label>
+                    <input class="form-input w-100 my-1" id="address-state" name="address-state"
+                        placeholder="Example: MN">
+                </div>
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-zip">Zip Code:</label>
+                    <input class="form-input w-100 my-1" id="address-zip" name="address-zip"
+                        placeholder="Example: 55387">
+                </div>
+            </div>
+
+            {{!-- Move-in and Move-out Dates, Bedrooms, Square Footage, Rent Amount, and Rating --}}
+            <div class="row">
+                <h4 class="mt-4">Additional Details:</h4>
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-move-in">Move-in Date:</label>
+                    <input class="form-input w-100 my-1" id="address-move-in" name="address-move-in" type="date">
+                </div>
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-move-out">Move-out Date:</label>
+                    <input class="form-input w-100 my-1" id="address-move-out" name="address-move-out" type="date">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-bedrooms">Bedrooms:</label>
+                    <input class="form-input w-100 my-1" id="address-bedrooms" name="address-bedrooms"
+                        placeholder="Example: 3br">
+                </div>
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-square-footage">Square Footage:</label>
+                    <input class="form-input w-100 my-1" id="address-square-footage" name="address-square-footage"
+                        placeholder="1200">
+                </div>
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-rent-amount">Monthly Rent:</label>
+                    <input class="form-input w-100 my-1" id="address-rent-amount" name="address-rent-amount"
+                        placeholder="1575">
+                </div>
+                <div class="col-md-6 form-group my-2">
+                    <label for="address-rating">My Rating (1-10)</label>
+                    <input class="form-input w-100 my-1" id="address-rating" name="address-rating" placeholder="7">
+                </div>
+                <div class="col-md-12 form-group my-2">
+                    <label for="address-review">Add Review (optional):</label>
+                    <textarea class="form-input w-100 my-1" id="address-review" name="address-review"
+                        placeholder="Example: Loved the location, but the landlord was difficult to work with."> </textarea>
+                </div>
+            </div>
+
             <div class="form-group my-4">
-                <label for="email-login">Email:</label>
-                <input class="form-input w-100 py-1" type="text" id="email-login" />
-            </div>
-            <div class="form-group">
-                <label for="password-login">Password:</label>
-                <input class="form-input w-100 py-1" type="password" id="password-login" />
-            </div>
-            <div class="form-group mt-4">
-                <button class="btn btn-primary" type="submit">Login</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </form>
     </div>
-
-    {{!-- Signup --}}
-    <div class="col-12 col-md-5 card p-4 mx-2">
-        <h2 class="card-title">Signup</h2>
-
-        <form class="form signup-form card-text">
-            <div class="form-group my-2">
-                <label for="name-signup">Name:</label>
-                <input class="form-input w-100" type="text" id="name-signup" />
-            </div>
-            <div class="form-group my-2">
-                <label for="phone-signup">Phone:</label>
-                <input class="form-input w-100 py-1" type="text" id="phone-signup" />
-            </div>
-            <div class="form-group my-2">
-                <label for="email-signup">Email:</label>
-                <input class="form-input w-100 py-1" type="text" id="email-signup" />
-            </div>
-            <div class="form-group my-2">
-                <label for="password-signup">Password:</label>
-                <input class="form-input w-100 py-1" type="password" id="password-signup" />
-            </div>
-            <div class="form-group my-2">
-                <label for="role-signup">Signup as</label>
-                <select class="form-input w-100 py-1" id="role-signup">
-                    <option value="renter">Renter</option>
-                    <option value="property_manager">Property Manager</option>
-                </select>
-            </div>
-            <div class="form-group mt-4">
-                <button class="btn btn-primary" type="submit">Signup</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-{{!-- event handlers in login.js --}}
-<script src="./js/login.js"></script>
+{{!-- event handlers in postUpdate.js --}}
+<script src="../js/postUpdate.js"></script>

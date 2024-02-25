@@ -4,7 +4,7 @@
         "rating": 4,
         "is_published": true,
         "reviewer_id": 22,
-        "reviewee_id": 21,
+        "property_id": 21,
         "reviewee_type": "property"
     },
     {
@@ -35,7 +35,7 @@
         "content": "Would definitely recommend this place to friends and family.",
         "rating": 10,
         "is_published": true,
-        "reviewer_id": 20,
+        "property_id": 20,
         "reviewee_id": 15,
         "reviewee_type": "property"
     },
@@ -44,7 +44,7 @@
         "rating": 10,
         "is_published": true,
         "reviewer_id": 19,
-        "reviewee_id": 14,
+        "property_id": 14,
         "reviewee_type": "property"
     },
     {
@@ -52,7 +52,7 @@
         "rating": 9,
         "is_published": true,
         "reviewer_id": 3,
-        "reviewee_id": 19,
+        "property_id": 19,
         "reviewee_type": "property"
     },
     {
@@ -84,7 +84,7 @@
         "rating": 4,
         "is_published": true,
         "reviewer_id": 22,
-        "reviewee_id": 13,
+        "property_id": 13,
         "reviewee_type": "property"
     },
     {
@@ -116,7 +116,7 @@
         "rating": 5,
         "is_published": true,
         "reviewer_id": 19,
-        "reviewee_id": 16,
+        "property_id": 16,
         "reviewee_type": "property"
     },
     {
@@ -124,7 +124,7 @@
         "rating": 7,
         "is_published": true,
         "reviewer_id": 6,
-        "reviewee_id": 15,
+        "property_id": 15,
         "reviewee_type": "property"
     },
     {
@@ -132,7 +132,7 @@
         "rating": 8,
         "is_published": true,
         "reviewer_id": 13,
-        "reviewee_id": 9,
+        "property_id": 9,
         "reviewee_type": "property"
     },
     {
@@ -140,7 +140,7 @@
         "rating": 10,
         "is_published": true,
         "reviewer_id": 15,
-        "reviewee_id": 5,
+        "property_id": 5,
         "reviewee_type": "property"
     },
     {
@@ -148,7 +148,7 @@
         "rating": 10,
         "is_published": true,
         "reviewer_id": 21,
-        "reviewee_id": 21,
+        "property_id": 21,
         "reviewee_type": "property"
     },
     {
@@ -156,7 +156,7 @@
         "rating": 5,
         "is_published": true,
         "reviewer_id": 23,
-        "reviewee_id": 2,
+        "property_id": 2,
         "reviewee_type": "property"
     },
     {
@@ -172,7 +172,7 @@
         "rating": 1,
         "is_published": true,
         "reviewer_id": 12,
-        "reviewee_id": 6,
+        "property_id": 6,
         "reviewee_type": "property"
     },
     {
@@ -180,7 +180,7 @@
         "rating": 8,
         "is_published": true,
         "reviewer_id": 16,
-        "reviewee_id": 12,
+        "property_id": 12,
         "reviewee_type": "property"
     },
     {
@@ -188,7 +188,7 @@
         "rating": 6,
         "is_published": true,
         "reviewer_id": 15,
-        "reviewee_id": 23,
+        "property_id": 23,
         "reviewee_type": "property"
     },
     {
@@ -212,7 +212,7 @@
         "rating": 6,
         "is_published": true,
         "reviewer_id": 12,
-        "reviewee_id": 8,
+        "property_id": 8,
         "reviewee_type": "property"
     },
     {
@@ -220,7 +220,7 @@
         "rating": 9,
         "is_published": true,
         "reviewer_id": 2,
-        "reviewee_id": 20,
+        "property_id": 20,
         "reviewee_type": "property"
     },
     {
@@ -228,7 +228,7 @@
         "rating": 7,
         "is_published": true,
         "reviewer_id": 7,
-        "reviewee_id": 18,
+        "property_id": 18,
         "reviewee_type": "property"
     },
     {
@@ -252,7 +252,7 @@
         "rating": 1,
         "is_published": true,
         "reviewer_id": 3,
-        "reviewee_id": 5,
+        "property_id": 5,
         "reviewee_type": "property"
     },
     {
@@ -276,7 +276,7 @@
         "rating": 8,
         "is_published": true,
         "reviewer_id": 12,
-        "reviewee_id": 19,
+        "property_id": 19,
         "reviewee_type": "property"
     },
     {
@@ -284,7 +284,7 @@
         "rating": 10,
         "is_published": true,
         "reviewer_id": 2,
-        "reviewee_id": 13,
+        "property_id": 13,
         "reviewee_type": "property"
     },
     {
@@ -316,7 +316,7 @@
         "rating": 2,
         "is_published": true,
         "reviewer_id": 14,
-        "reviewee_id": 1,
+        "property_id": 1,
         "reviewee_type": "property"
     },
     {
@@ -324,7 +324,7 @@
         "rating": 9,
         "is_published": true,
         "reviewer_id": 18,
-        "reviewee_id": 13,
+        "property_id": 13,
         "reviewee_type": "property"
     },
     {
@@ -332,7 +332,7 @@
         "rating": 3,
         "is_published": true,
         "reviewer_id": 22,
-        "reviewee_id": 17,
+        "property_id": 17,
         "reviewee_type": "property"
     },
     {
@@ -340,7 +340,7 @@
         "rating": 9,
         "is_published": true,
         "reviewer_id": 6,
-        "reviewee_id": 2,
+        "property_id": 2,
         "reviewee_type": "property"
     },
     {
@@ -348,7 +348,7 @@
         "rating": 4,
         "is_published": true,
         "reviewer_id": 12,
-        "reviewee_id": 19,
+        "property_id": 19,
         "reviewee_type": "property"
     },
     {
@@ -364,7 +364,7 @@
         "rating": 2,
         "is_published": true,
         "reviewer_id": 8,
-        "reviewee_id": 16,
+        "property_id": 16,
         "reviewee_type": "property"
     },
     {
@@ -372,7 +372,7 @@
         "rating": 10,
         "is_published": true,
         "reviewer_id": 9,
-        "reviewee_id": 17,
+        "property_id": 17,
         "reviewee_type": "property"
     },
     {
@@ -388,7 +388,7 @@
         "rating": 2,
         "is_published": true,
         "reviewer_id": 1,
-        "reviewee_id": 17,
+        "property_id": 17,
         "reviewee_type": "property"
     },
     {
