@@ -171,7 +171,16 @@ router.get('/dashboard', withAuth, async (req, res) => {
         const userData = await Users.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
             include: [
-                { model: Properties, as: 'UserRentals' },
+                {
+                    model: Properties,
+                    as: 'UserRentals',
+                    include: [
+                        {
+                            model: Reviews,
+                            as: 'reviews',
+                        },
+                    ],
+                },
                 { model: Reviews, as: 'WrittenReviews' },
                 { model: Reviews, as: 'ReceivedReviews' },
                 { model: Leases, as: 'rentals' },
@@ -183,8 +192,33 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
         const user = userData.get({ plain: true });
 
+        // Lease for each UserRentals
+        user.UserRentals.forEach((rental) => {
+            const lease = user.rentals.find((lease) => lease.property_id === rental.id);
+            if (lease) {
+                rental.leaseStartDate = lease.startDate;
+                rental.leaseEndDate = lease.endDate;
+                rental.rentAmount = lease.rent_amount;
+                rental.squareFootage = lease.square_footage;
+                rental.bedrooms = lease.rent_bedrooms;
+            }
+            // the review written by the user for the current rental property
+            const review = user.WrittenReviews.find(
+                (review) => review.reviewee_id === rental.id && review.reviewee_type === 'property'
+            );
+            if (review) {
+                rental.reviewContent = review.content;
+                rental.reviewRating = review.rating;
+            }
+        });
+
+        // profile picture link
+        const userProfilePic = user.UserDocuments.find((doc) => doc.type === 'profile_pic');
+        const profilePicLink = userProfilePic ? userProfilePic.link : '/images/users/default.jpg';
+
         res.render('dashboard', {
             ...user,
+            profilePicLink,
             logged_in: true,
         });
     } catch (err) {

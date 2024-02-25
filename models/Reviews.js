@@ -26,8 +26,8 @@ Reviews.init(
         },
         isPublished: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: false,
+            allowNull: true,
+            defaultValue: true,
         },
         reviewer_id: {
             type: DataTypes.INTEGER,
@@ -40,6 +40,13 @@ Reviews.init(
             type: DataTypes.INTEGER,
             references: {
                 model: 'users',
+                key: 'id',
+            },
+        },
+        property_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'properties',
                 key: 'id',
             },
         },

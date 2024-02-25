@@ -10,9 +10,16 @@ const newFormHandler = async (event) => {
     const addressCity = document.querySelector('#address-city').value.trim();
     const addressState = document.querySelector('#address-state').value.trim();
     const addressZip = document.querySelector('#address-zip').value.trim();
+    const addressMoveIn = document.querySelector('#address-move-in').value.trim();
+    const addressMoveOut = document.querySelector('#address-move-out').value.trim();
+    const addressRent = document.querySelector('#address-rent-amount').value.trim();
+    const addressBedrooms = document.querySelector('#address-bedrooms').value.trim();
+    const addressSquareFootage = document.querySelector('#address-square-footage').value.trim();
+    const addressRating = document.querySelector('#address-rating').value.trim();
+    const addressReview = document.querySelector('#address-review').value.trim();
 
     if (addressLine1 && addressCity && addressState && addressZip) {
-        const response = await fetch(`/api/properties`, {
+        let response = await fetch(`/api/properties`, {
             method: 'POST',
             body: JSON.stringify({
                 name: addressName,
@@ -27,10 +34,51 @@ const newFormHandler = async (event) => {
             },
         });
 
+        if (!response.ok) {
+            console.log('Failed to add property');
+            return; // Stop the process if can't create property
+        }
+
+        const propertyData = await response.json();
+        const propertyId = propertyData.id;
+
+        // Now we create the lease with the property ID
+        response = await fetch(`/api/leases`, {
+            method: 'POST',
+            body: JSON.stringify({
+                property_id: propertyId,
+                start_date: addressMoveIn,
+                end_date: addressMoveOut,
+                rent_amount: addressRent,
+                rent_bedrooms: addressBedrooms,
+                square_footage: addressSquareFootage,
+            }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.log('Failed to add lease');
+            alert(`Failed to add lease: ${errorData.message}`);
+            return;
+        }
+
+        // finally we create the review with the property ID
+        response = await fetch(`/api/reviews`, {
+            method: 'POST',
+            body: JSON.stringify({
+                rating: addressRating,
+                content: addressReview,
+                property_id: propertyId,
+                reviewee_type: 'property',
+            }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert('Failed to add property');
+            console.log('Failed to add review');
         }
     }
 };
