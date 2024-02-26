@@ -34,7 +34,11 @@
     </div>
     {{/each}}
     {{else}}
-    <p>No reviews yet.</p>
+    <div class="card mb-2">
+        <div class="card-body">
+            <p>This property has no reviews yet.</p>
+        </div>
+    </div>
     {{/if}}
 
     {{#if leases.length}}
