@@ -63,6 +63,12 @@ font-style: italic;
 .property-images img {
     min-height: 200px;
     max-height: 200px;
+    width: 50%;
+    object-fit: cover;
+} 
+.property-images-card img {
+    min-height: 200px;
+    max-height: 200px;
     width: 100%;
     object-fit: cover;
 } 
@@ -83,4 +89,11 @@ width:90%;
 
 .form-input {
     color: rgb(43, 42, 42);
+}
+h1{
+    color: rgb(3, 65, 44)
+}
+
+h3{
+    color:white;
 }
