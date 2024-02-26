@@ -41,7 +41,9 @@
             {{#each renters}}
             <div class="card m-2" style="width: 18rem;">
                 <div class="card-body">
+                    <a href="/renters/{{id}}" class="card-link">
                     <h5 class="card-title">{{name}}</h5>
+                    </a>
                     <h6 class="card-subtitle mb-2 text-muted">{{email}}</h6>
                     <p class="card-text">Contact: {{phone}}</p>
                     <!-- TODO: Add more renter details here, like properties, reviews -->
@@ -52,4 +54,7 @@
     </div>
 </div>
 
-
+<script>
+    var data = {{{ json this}}};
+    console.log(data);
+</script>

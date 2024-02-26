@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
             include: [
                 {
                     model: Users,
-                    attributes: ['name', 'email', 'phone'],
+                    attributes: ['id', 'name', 'email', 'phone'],
                 },
                 {
                     model: Reviews,
@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
         // Get renters (users with the role of "renter")
         const renterData = await Users.findAll({
             where: { role: 'renter' },
-            attributes: ['name', 'email', 'phone'],
+            attributes: ['id', 'name', 'email', 'phone'],
         });
         const renters = renterData.map((renter) => renter.get({ plain: true }));
 
