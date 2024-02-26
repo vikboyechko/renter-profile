@@ -11,6 +11,10 @@
     <!-- Profile Picture -->
     <div class="col-md-3">
         <div class="card mb-4">
+            {{!-- hidden element to get the property id --}}
+            <form>
+            <input type="hidden" id="user-id" name="user-id" value="{{id}}">
+            </form>
             {{!-- <img src="{{#if UserDocuments.profile_pic}}{{UserDocuments.link}}{{else}}/images/users/default.jpg{{/if}}"
                 class="card-img-top" alt="Profile Picture"> --}}
         <img src="{{profilePicLink}}" class="card-img-top" alt="Profile Picture">
@@ -191,12 +195,8 @@
     console.log(data);
 </script>
 
-{{!-- event handlers in renterDashboard.js --}}
-
 
     <!-- local upload instantiation -->
-    <script 
-     src="./js/photoUpload.js" 
-    >
-    </script>
+
+<script src="./js/photoUpload.js" ></script>
 <script src="./js/renterDashboard.js"></script>

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // Import the User model from the models folder
-const { Users } = require('../../models');
+const { Users, Documents } = require('../../models');
 
 // Email module
 const nodemailer = require('nodemailer');
@@ -112,6 +112,24 @@ router.put('/:id', async (req, res) => {
         res.status(200).json({ message: 'User updated successfully' });
     } catch (err) {
         res.status(500).json(err);
+    }
+});
+
+// Endpoint to add a new profile picture document
+router.post('/:userId/profile-picture', async (req, res) => {
+    const userId = req.params.userId;
+    const { profileImageUrl } = req.body;
+
+    try {
+        const newDocument = await Documents.create({
+            user_id: userId,
+            link: profileImageUrl,
+            type: 'profile_pic', // Assuming you have a type field to distinguish document types
+        });
+        res.json({ message: 'Profile image added successfully', document: newDocument });
+    } catch (error) {
+        console.error('Failed to add profile image:', error);
+        res.status(500).json({ error: 'Internal server error' });
     }
 });
 
